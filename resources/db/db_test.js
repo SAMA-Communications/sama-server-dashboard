@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 
-const dbTest = await mongoose.connect(`${process.env.MONGODB_TEST_URL}`);
+const dbTest = mongoose.createConnection(`${process.env.MONGODB_TEST_URL}`, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
 
 export default dbTest;

@@ -1,17 +1,20 @@
 import AdminJS from "adminjs";
-import AdminJSExpress from "@adminjs/express";
+import AdminJSExpress, { log } from "@adminjs/express";
 import dotenv from "dotenv";
 import express from "express";
+import mongoose from "mongoose";
 import { Resource, Database } from "@adminjs/mongoose";
 
 // -- database
 import db from "./resources/db/db.js";
+import dbTest from "./resources/db/db_test.js";
 
 //  -- resources
-import UsersResource from "./resources/users.js";
+// import UsersResource from "./resources/users.js";
 
 // -- custom components
-// import { Components, componentLoader } from "./components/components.js";
+import { Components, componentLoader } from "./components/components.js";
+import { UserSchema } from "./schemas/User.js";
 
 dotenv.config();
 AdminJS.registerAdapter({ Resource, Database });
@@ -23,6 +26,9 @@ const DEFAULT_ADMIN = {
 
 const start = async () => {
   const app = express();
+
+  const User = db.model("Users", UserSchema);
+  const User_t = dbTest.model("Users", UserSchema);
 
   const adminOptions = {
     rootPath: "/",
@@ -37,7 +43,20 @@ const start = async () => {
     // },
     // componentLoader,
 
-    resources: [UsersResource],
+    resources: [
+      {
+        resource: User,
+        options: {
+          id: "user",
+        },
+      },
+      {
+        resource: User_t,
+        options: {
+          id: "user_",
+        },
+      },
+    ],
   };
   const admin = new AdminJS(adminOptions);
 
