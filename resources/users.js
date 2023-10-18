@@ -1,17 +1,16 @@
-import { User } from "../entities/users.js";
-
-import { Components } from "../components/components.js";
+// import { Components } from "../components/components.js";
+import { User } from "../schemas/User.js";
 
 const UserResource = {
   resource: User,
   options: {
-    properties: {
-      content: {
-        components: {
-          edit: Components.MyEditBlock,
-        },
-      },
-    },
+    // properties: {
+    //   content: {
+    //     components: {
+    //       edit: Components.MyEditBlock,
+    //     },
+    //   },
+    // },
     listProperties: [
       "_id",
       "login",

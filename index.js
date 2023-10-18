@@ -1,59 +1,67 @@
 import AdminJS from "adminjs";
 import AdminJSExpress from "@adminjs/express";
-import db from "./resources/db/db.js";
 import dotenv from "dotenv";
 import express from "express";
 import { Resource, Database } from "@adminjs/mongoose";
 
+// -- database
+import db from "./resources/db/db.js";
+
 //  -- resources
-import UserResource from "./resources/user.js";
+import UsersResource from "./resources/users.js";
 
 // -- custom components
-import { Components, componentLoader } from "./components/components.js";
+// import { Components, componentLoader } from "./components/components.js";
 
 dotenv.config();
 AdminJS.registerAdapter({ Resource, Database });
 
-// const DEFAULT_ADMIN = {
-//   email: process.env.ADMIN_EMAIL,
-//   password: process.env.ADMIN_PASSWORD,
-// };
+const DEFAULT_ADMIN = {
+  email: process.env.ADMIN_EMAIL,
+  password: process.env.ADMIN_PASSWORD,
+};
 
 const start = async () => {
   const app = express();
 
   const adminOptions = {
-    databases: [db],
     rootPath: "/",
-    dashboard: {
-      component: Components.Dashboard,
+    loginPath: "/login",
+    logoutPath: "/logout",
+    branding: {
+      companyName: "SAMA",
     },
-    resources: [UserResource],
-    componentLoader,
+
+    // dashboard: {
+    //   component: Components.Dashboard,
+    // },
+    // componentLoader,
+
+    resources: [UsersResource],
   };
   const admin = new AdminJS(adminOptions);
 
-  const adminRouter = AdminJSExpress.buildRouter(
-    //buildAuthenticatedRouter
-    admin
-    // {
-    //   // authenticate: async (email, password) => {
-    //   //   if (
-    //   //     email === DEFAULT_ADMIN.email &&
-    //   //     password === DEFAULT_ADMIN.password
-    //   //   ) {
-    //   //     return Promise.resolve(DEFAULT_ADMIN);
-    //   //   }
-    //   //   return null;
-    //   // },
-    //   cookieName: process.env.COOKIE_NAME,
-    //   cookiePassword: process.env.COOKIE_PASSWORD,
-    // },
-    // null,
-    // {
-    //   resave: true,
-    //   saveUninitialized: true,
-    // }
+  const adminRouter = AdminJSExpress.buildAuthenticatedRouter(
+    admin,
+    {
+      authenticate: async (email, password) => {
+        if (
+          email === DEFAULT_ADMIN.email &&
+          password === DEFAULT_ADMIN.password
+        ) {
+          return Promise.resolve(DEFAULT_ADMIN);
+        }
+        return null;
+      },
+      cookieName: process.env.COOKIE_NAME,
+      cookiePassword: process.env.COOKIE_PASSWORD,
+    },
+    null,
+    {
+      resave: true,
+      saveUninitialized: true,
+      secret: process.env.COOKIE_PASSWORD,
+    }
   );
   app.use(admin.options.rootPath, adminRouter);
 
