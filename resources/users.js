@@ -25,20 +25,20 @@ const commonOptions = {
   editProperties: ["email", "phone", "first_name", "last_name"],
 };
 
-const UserResource = {
-  resource: db.model("Users", UserSchema),
+const Users = {
+  resource: db.model("users", UserSchema),
   options: {
     id: "user",
     ...commonOptions,
   },
 };
 
-const UserResource_ = {
-  resource: dbTest.model("Users", UserSchema),
+const Users_ = {
+  resource: dbTest.model("users", UserSchema),
   options: {
     id: "user_",
     ...commonOptions,
   },
 };
 
-export { UserResource_, UserResource };
+export { Users, Users_ };
