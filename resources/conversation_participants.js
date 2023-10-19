@@ -1,5 +1,5 @@
-import db from "./db/db.js";
-import dbTest from "./db/db_test.js";
+import dbDev, { dbDevNavigation } from "./db/db_dev.js";
+import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { ConversationParticipantSchema } from "../schemas/conversation_participant.js";
 
 const fields = [
@@ -18,23 +18,25 @@ const commonOptions = {
 };
 
 const ConversationParticipants = {
-  resource: db.model(
+  resource: dbProd.model(
     "conversations_participants",
     ConversationParticipantSchema
   ),
   options: {
     id: "conversations_participants",
+    navigation: dbProdNavigation,
     ...commonOptions,
   },
 };
 
 const ConversationParticipants_ = {
-  resource: dbTest.model(
+  resource: dbDev.model(
     "conversations_participants",
     ConversationParticipantSchema
   ),
   options: {
     id: "conversations_participants_",
+    navigation: dbDevNavigation,
     ...commonOptions,
   },
 };

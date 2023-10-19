@@ -1,21 +1,23 @@
-import db from "./db/db.js";
-import dbTest from "./db/db_test.js";
+import dbDev, { dbDevNavigation } from "./db/db_dev.js";
+import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { UserSchema } from "../schemas/user.js";
 
 const commonOptions = {};
 
 const OldUsers = {
-  resource: db.model("old_users", UserSchema),
+  resource: dbProd.model("old_users", UserSchema),
   options: {
     id: "old_users",
+    navigation: dbProdNavigation,
     ...commonOptions,
   },
 };
 
 const OldUsers_ = {
-  resource: dbTest.model("old_users", UserSchema),
+  resource: dbDev.model("old_users", UserSchema),
   options: {
     id: "old_users_",
+    navigation: dbDevNavigation,
     ...commonOptions,
   },
 };

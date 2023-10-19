@@ -1,21 +1,23 @@
-import db from "./db/db.js";
-import dbTest from "./db/db_test.js";
+import dbDev, { dbDevNavigation } from "./db/db_dev.js";
+import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { BlockedUserSchema } from "../schemas/blocked_user.js";
 
 const commonOptions = {};
 
 const BlockedUsers = {
-  resource: db.model("blocked_users", BlockedUserSchema),
+  resource: dbProd.model("blocked_users", BlockedUserSchema),
   options: {
     id: "blocked_users",
+    navigation: dbProdNavigation,
     ...commonOptions,
   },
 };
 
 const BlockedUsers_ = {
-  resource: dbTest.model("blocked_users", BlockedUserSchema),
+  resource: dbDev.model("blocked_users", BlockedUserSchema),
   options: {
     id: "blocked_users_",
+    navigation: dbDevNavigation,
     ...commonOptions,
   },
 };

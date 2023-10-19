@@ -1,21 +1,23 @@
-import db from "./db/db.js";
-import dbTest from "./db/db_test.js";
+import dbDev, { dbDevNavigation } from "./db/db_dev.js";
+import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { ContactSchema } from "../schemas/contact.js";
 
 const commonOptions = {};
 
 const Contacts = {
-  resource: db.model("contacts", ContactSchema),
+  resource: dbProd.model("contacts", ContactSchema),
   options: {
     id: "contacts",
+    navigation: dbProdNavigation,
     ...commonOptions,
   },
 };
 
 const Contacts_ = {
-  resource: dbTest.model("contacts", ContactSchema),
+  resource: dbDev.model("contacts", ContactSchema),
   options: {
     id: "contacts_",
+    navigation: dbDevNavigation,
     ...commonOptions,
   },
 };

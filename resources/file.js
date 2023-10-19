@@ -1,25 +1,25 @@
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import { MessageSchema } from "../schemas/message.js";
+import { FileSchema } from "../schemas/file.js";
 
 const commonOptions = {};
 
-const Messages = {
-  resource: dbProd.model("messages", MessageSchema),
+const File = {
+  resource: dbProd.model("file", FileSchema),
   options: {
-    id: "messages",
+    id: "file",
     navigation: dbProdNavigation,
     ...commonOptions,
   },
 };
 
-const Messages_ = {
-  resource: dbDev.model("messages", MessageSchema),
+const File_ = {
+  resource: dbDev.model("file", FileSchema),
   options: {
-    id: "messages_",
+    id: "file_",
     navigation: dbDevNavigation,
     ...commonOptions,
   },
 };
 
-export { Messages, Messages_ };
+export { File, File_ };

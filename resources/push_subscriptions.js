@@ -1,21 +1,23 @@
-import db from "./db/db.js";
-import dbTest from "./db/db_test.js";
+import dbDev, { dbDevNavigation } from "./db/db_dev.js";
+import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { PushSubscriptionSchema } from "../schemas/push_subscription.js";
 
 const commonOptions = {};
 
 const PushSubscriptions = {
-  resource: db.model("push_subscriptions", PushSubscriptionSchema),
+  resource: dbProd.model("push_subscriptions", PushSubscriptionSchema),
   options: {
     id: "push_subscriptions",
+    navigation: dbProdNavigation,
     ...commonOptions,
   },
 };
 
 const PushSubscriptions_ = {
-  resource: dbTest.model("push_subscriptions", PushSubscriptionSchema),
+  resource: dbDev.model("push_subscriptions", PushSubscriptionSchema),
   options: {
     id: "push_subscriptions_",
+    navigation: dbDevNavigation,
     ...commonOptions,
   },
 };

@@ -1,5 +1,5 @@
-import db from "./db/db.js";
-import dbTest from "./db/db_test.js";
+import dbDev, { dbDevNavigation } from "./db/db_dev.js";
+import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { ConversationSchema } from "../schemas/conversation.js";
 
 const fields = [
@@ -21,17 +21,19 @@ const commonOptions = {
 };
 
 const Conversations = {
-  resource: db.model("conversations", ConversationSchema),
+  resource: dbProd.model("conversations", ConversationSchema),
   options: {
     id: "conversations",
+    navigation: dbProdNavigation,
     ...commonOptions,
   },
 };
 
 const Conversations_ = {
-  resource: dbTest.model("conversations", ConversationSchema),
+  resource: dbDev.model("conversations", ConversationSchema),
   options: {
     id: "conversations_",
+    navigation: dbDevNavigation,
     ...commonOptions,
   },
 };

@@ -1,21 +1,23 @@
-import db from "./db/db.js";
-import dbTest from "./db/db_test.js";
+import dbDev, { dbDevNavigation } from "./db/db_dev.js";
+import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { PushEventSchema } from "../schemas/push_event.js";
 
 const commonOptions = {};
 
 const PushEvents = {
-  resource: db.model("push_events", PushEventSchema),
+  resource: dbProd.model("push_events", PushEventSchema),
   options: {
     id: "push_events",
+    navigation: dbProdNavigation,
     ...commonOptions,
   },
 };
 
 const PushEvents_ = {
-  resource: dbTest.model("push_events", PushEventSchema),
+  resource: dbDev.model("push_events", PushEventSchema),
   options: {
     id: "push_events_",
+    navigation: dbDevNavigation,
     ...commonOptions,
   },
 };

@@ -7,7 +7,7 @@ import { Resource, Database } from "@adminjs/mongoose";
 // -- custom components
 import { Components, componentLoader } from "./components/components.js";
 
-//  -- resources
+// -- resources
 import { Users, Users_ } from "./resources/users.js";
 import { UserTokens, UserTokens_ } from "./resources/user_tokens.js";
 import { OldUsers, OldUsers_ } from "./resources/old_users.js";
@@ -17,11 +17,8 @@ import {
   PushSubscriptions_,
 } from "./resources/push_subscriptions.js";
 import { Messages, Messages_ } from "./resources/messages.js";
-import {
-  MessageStatuses,
-  MessageStatuses_,
-} from "./resources/message_statuses.js";
-import { Files, Files_ } from "./resources/files.js";
+import { MessageStatus, MessageStatus_ } from "./resources/message_status.js";
+import { File, File_ } from "./resources/file.js";
 import { Conversations, Conversations_ } from "./resources/conversations.js";
 import {
   ConversationParticipants,
@@ -57,8 +54,8 @@ const start = async () => {
       ...[PushSubscriptions, PushSubscriptions_],
       ...[PushEvents, PushEvents_],
       ...[Messages, Messages_],
-      ...[MessageStatuses, MessageStatuses_],
-      ...[Files, Files_],
+      ...[MessageStatus, MessageStatus_],
+      ...[File, File_],
       ...[Conversations, Conversations_],
       ...[ConversationParticipants, ConversationParticipants_],
       ...[Contacts, Contacts_],
