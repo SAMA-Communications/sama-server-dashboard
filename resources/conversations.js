@@ -2,17 +2,22 @@ import db from "./db/db.js";
 import dbTest from "./db/db_test.js";
 import { ConversationSchema } from "../schemas/conversation.js";
 
+const fields = [
+  "_id",
+  "name",
+  "type",
+  "description",
+  "owner_id",
+  "opponent_id",
+  "updated_at",
+  "created_at",
+];
+
 const commonOptions = {
-  listProperties: [
-    "_id",
-    "name",
-    "type",
-    "description",
-    "owner_id",
-    "opponent_id",
-    "updated_at",
-    "created_at",
-  ],
+  listProperties: fields,
+  filterProperties: fields,
+  editProperties: ["name", "description"],
+  showProperties: fields,
 };
 
 const Conversations = {

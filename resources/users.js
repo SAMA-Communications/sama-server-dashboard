@@ -3,6 +3,18 @@ import db from "./db/db.js";
 import dbTest from "./db/db_test.js";
 import { UserSchema } from "../schemas/User.js";
 
+const fields = [
+  "_id",
+  "login",
+  "email",
+  "phone",
+  "recent_activity",
+  "first_name",
+  "last_name",
+  "updated_at",
+  "created_at",
+];
+
 const commonOptions = {
   // properties: {
   //   content: {
@@ -11,18 +23,10 @@ const commonOptions = {
   //     },
   //   },
   // },
-  listProperties: [
-    "_id",
-    "login",
-    "email",
-    "phone",
-    "recent_activity",
-    "first_name",
-    "last_name",
-    "updated_at",
-    "created_at",
-  ],
+  listProperties: fields,
+  filterProperties: fields,
   editProperties: ["email", "phone", "first_name", "last_name"],
+  showProperties: fields,
 };
 
 const Users = {

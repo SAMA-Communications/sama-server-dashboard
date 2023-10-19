@@ -2,7 +2,20 @@ import db from "./db/db.js";
 import dbTest from "./db/db_test.js";
 import { ConversationParticipantSchema } from "../schemas/conversation_participant.js";
 
-const commonOptions = {};
+const fields = [
+  "_id",
+  "conversation_id",
+  "user_id",
+  "updated_at",
+  "created_at",
+];
+
+const commonOptions = {
+  listProperties: fields,
+  filterProperties: fields,
+  editProperties: [],
+  showProperties: fields,
+};
 
 const ConversationParticipants = {
   resource: db.model(

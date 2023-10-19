@@ -2,6 +2,8 @@ import db from "./db/db.js";
 import dbTest from "./db/db_test.js";
 import { MessageStatusSchema } from "../schemas/message_status.js";
 
+const fields = [];
+
 const commonOptions = {};
 
 const MessageStatuses = {
