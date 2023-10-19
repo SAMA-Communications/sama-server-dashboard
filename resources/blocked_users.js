@@ -2,7 +2,20 @@ import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { BlockedUserSchema } from "../schemas/blocked_user.js";
 
-const commonOptions = {};
+const fields = [
+  "_id",
+  "blocked_user_id",
+  "user_id",
+  "updated_at",
+  "created_at",
+];
+
+const commonOptions = {
+  listProperties: fields,
+  filterProperties: fields,
+  editProperties: [],
+  showProperties: fields,
+};
 
 const BlockedUsers = {
   resource: dbProd.model("blocked_users", BlockedUserSchema),

@@ -2,7 +2,21 @@ import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { UserTokenSchema } from "../schemas/user_token.js";
 
-const commonOptions = {};
+const fields = [
+  "_id",
+  "user_id",
+  "device_id",
+  "token",
+  "updated_at",
+  "created_at",
+];
+
+const commonOptions = {
+  listProperties: fields,
+  filterProperties: fields,
+  editProperties: ["token"],
+  showProperties: fields,
+};
 
 const UserTokens = {
   resource: dbProd.model("user_tokens", UserTokenSchema),
