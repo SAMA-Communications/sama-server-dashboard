@@ -10,4 +10,4 @@ export const FileSchema = new Schema({
   created_at: Date,
 });
 
-export const File = model("file", FileSchema);
+export const File = model("files", FileSchema);

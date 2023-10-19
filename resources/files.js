@@ -4,22 +4,22 @@ import { FileSchema } from "../schemas/file.js";
 
 const commonOptions = {};
 
-const File = {
-  resource: dbProd.model("file", FileSchema),
+const Files = {
+  resource: dbProd.model("files", FileSchema),
   options: {
-    id: "file",
+    id: "files",
     navigation: dbProdNavigation,
     ...commonOptions,
   },
 };
 
-const File_ = {
-  resource: dbDev.model("file", FileSchema),
+const Files_ = {
+  resource: dbDev.model("files", FileSchema),
   options: {
-    id: "file_",
+    id: "files_",
     navigation: dbDevNavigation,
     ...commonOptions,
   },
 };
 
-export { File, File_ };
+export { Files, Files_ };

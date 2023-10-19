@@ -10,4 +10,4 @@ export const MessageStatusSchema = new Schema({
   created_at: Date,
 });
 
-export const MessageStatus = model("message_status", MessageStatusSchema);
+export const MessageStatus = model("message_statuses", MessageStatusSchema);

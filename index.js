@@ -17,8 +17,11 @@ import {
   PushSubscriptions_,
 } from "./resources/push_subscriptions.js";
 import { Messages, Messages_ } from "./resources/messages.js";
-import { MessageStatus, MessageStatus_ } from "./resources/message_status.js";
-import { File, File_ } from "./resources/file.js";
+import {
+  MessageStatuses,
+  MessageStatuses_,
+} from "./resources/message_statuses.js";
+import { Files, Files_ } from "./resources/files.js";
 import { Conversations, Conversations_ } from "./resources/conversations.js";
 import {
   ConversationParticipants,
@@ -54,8 +57,8 @@ const start = async () => {
       ...[PushSubscriptions, PushSubscriptions_],
       ...[PushEvents, PushEvents_],
       ...[Messages, Messages_],
-      ...[MessageStatus, MessageStatus_],
-      ...[File, File_],
+      ...[MessageStatuses, MessageStatuses_],
+      ...[Files, Files_],
       ...[Conversations, Conversations_],
       ...[ConversationParticipants, ConversationParticipants_],
       ...[Contacts, Contacts_],
