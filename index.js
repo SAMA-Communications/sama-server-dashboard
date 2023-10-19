@@ -10,7 +10,6 @@ import { Components, componentLoader } from "./components/components.js";
 // -- resources
 import { Users, Users_ } from "./resources/users.js";
 import { UserTokens, UserTokens_ } from "./resources/user_tokens.js";
-import { OldUsers, OldUsers_ } from "./resources/old_users.js";
 import { PushEvents, PushEvents_ } from "./resources/push_events.js";
 import {
   PushSubscriptions,
@@ -53,7 +52,6 @@ const start = async () => {
     resources: [
       ...[Users, Users_],
       ...[UserTokens, UserTokens_],
-      ...[OldUsers, OldUsers_],
       ...[PushSubscriptions, PushSubscriptions_],
       ...[PushEvents, PushEvents_],
       ...[Messages, Messages_],
