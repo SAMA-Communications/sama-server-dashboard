@@ -1,7 +1,7 @@
 // import { Components } from "../components/components.js";
 import db from "./db/db.js";
 import dbTest from "./db/db_test.js";
-import { UserSchema } from "../schemas/User.js";
+import { UserSchema } from "../schemas/user.js";
 
 const fields = [
   "_id",
