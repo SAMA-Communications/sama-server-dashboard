@@ -27,6 +27,9 @@ import { Contacts, Contacts_ } from "./resources/contacts.js";
 import { ClusterNodes, ClusterNodes_ } from "./resources/cluster_nodes.js";
 import { BlockedUsers, BlockedUsers_ } from "./resources/blocked_users.js";
 
+// -- components
+import { componentLoader } from "./components/components.js";
+
 dotenv.config();
 AdminJS.registerAdapter({ Resource, Database });
 
@@ -40,6 +43,8 @@ const start = async () => {
     branding: {
       companyName: "SAMA",
     },
+
+    componentLoader,
 
     resources: [
       ...[Users, Users_],

@@ -1,6 +1,7 @@
 import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
+import { Components } from "../components/components.js";
 
 const collectionName = "users";
 const UserSchema = new Schema({
@@ -39,6 +40,14 @@ const Users = {
     id: "user",
     navigation: dbProdNavigation,
     ...commonOptions,
+    properties: {
+      _id: {
+        type: "string",
+        components: {
+          list: Components.UserIdFieldView,
+        },
+      },
+    },
   },
 };
 
