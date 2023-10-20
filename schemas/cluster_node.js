@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 
 export const ClusterNodeSchema = new Schema({
-  _id: String,
   ip_address: String,
   hostname: String,
   port: String,

@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 
 export const PushSubscriptionSchema = new Schema({
-  _id: String,
   user_id: String,
   platform: String,
   web_endpoint: String,

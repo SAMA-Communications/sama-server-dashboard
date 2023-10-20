@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 
 export const FileSchema = new Schema({
-  _id: String,
   name: String,
   size: String,
   content_type: String,

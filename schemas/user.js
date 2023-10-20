@@ -1,7 +1,6 @@
-import { model, Schema } from "mongoose";
+import { Schema } from "mongoose";
 
 export const UserSchema = new Schema({
-  _id: String,
   login: String,
   email: String,
   phone: String,
@@ -11,5 +10,3 @@ export const UserSchema = new Schema({
   updated_at: Date,
   created_at: Date,
 });
-
-export const User = model("users", UserSchema);

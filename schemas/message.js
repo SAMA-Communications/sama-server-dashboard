@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 
 export const MessageSchema = new Schema({
-  _id: String,
   t: Number,
   from: String,
   body: String,

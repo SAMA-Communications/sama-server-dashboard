@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 
 export const ConversationSchema = new Schema({
-  _id: String,
   name: String,
   type: String,
   description: String,

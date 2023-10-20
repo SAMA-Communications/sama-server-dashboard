@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 
 export const MessageStatusSchema = new Schema({
-  _id: String,
   cid: String,
   mid: String,
   user_id: String,

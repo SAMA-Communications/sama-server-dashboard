@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 
 export const PushEventSchema = new Schema({
-  _id: String,
   user_id: String,
   recipients_ids: Array, // check
   message: Object, // check

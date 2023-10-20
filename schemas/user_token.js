@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 
 export const UserTokenSchema = new Schema({
-  _id: String,
   user_id: String,
   device_id: String,
   token: String,
