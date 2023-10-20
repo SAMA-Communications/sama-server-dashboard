@@ -1,6 +1,7 @@
 import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
+import { Components } from "../components/components.js";
 
 const collectionName = "user_tokens";
 export const UserTokenSchema = new Schema({
@@ -25,6 +26,15 @@ const commonOptions = {
   filterProperties: fields,
   editProperties: fields.slice(1),
   showProperties: fields,
+  properties: {
+    token: {
+      type: "string",
+      components: {
+        list: Components.ShortcutTokenView,
+        show: Components.BlockTokenShow,
+      },
+    },
+  },
 };
 
 const UserTokens = {

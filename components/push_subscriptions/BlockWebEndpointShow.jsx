@@ -1,5 +1,5 @@
-export default function ShortcutWebKeyP256DhShow({ record, resource }) {
-  const currentWebEndpoint = record.params.web_key_p256dh;
+export default function BlockWebKeyP256DhShow({ record, resource }) {
+  const currentWebEndpoint = record.params.web_endpoint;
 
   return (
     <section
@@ -24,7 +24,7 @@ export default function ShortcutWebKeyP256DhShow({ record, resource }) {
           fontWeight: 300,
         }}
       >
-        Web Key P 256 Dh
+        Web Endpoint
       </label>
       <p style={{ overflowWrap: "break-word" }}>{currentWebEndpoint}</p>
     </section>

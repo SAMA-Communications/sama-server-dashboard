@@ -8,17 +8,28 @@ const __dirname = path.dirname(__filename);
 const componentLoader = new ComponentLoader();
 
 const Components = {
+  // -- users
   ShortcutIdView: componentLoader.add(
     "ShortcutIdView",
     path.resolve(__dirname, "./users/ShortcutIdView")
   ),
+  // -- user_tokens
+  BlockTokenShow: componentLoader.add(
+    "BlockTokenShow",
+    path.resolve(__dirname, "./user_tokens/BlockTokenShow")
+  ),
+  ShortcutTokenView: componentLoader.add(
+    "ShortcutTokenView",
+    path.resolve(__dirname, "./user_tokens/ShortcutTokenView")
+  ),
+  // -- push_subscriptions
   ShortcutWebEndpointView: componentLoader.add(
     "ShortcutWebEndpointView",
     path.resolve(__dirname, "./push_subscriptions/ShortcutWebEndpointView")
   ),
-  ShortcutWebEndpointShow: componentLoader.add(
-    "ShortcutWebEndpointShow",
-    path.resolve(__dirname, "./push_subscriptions/ShortcutWebEndpointShow")
+  BlockWebEndpointShow: componentLoader.add(
+    "BlockWebEndpointShow",
+    path.resolve(__dirname, "./push_subscriptions/BlockWebEndpointShow")
   ),
   ShortcutWebKeyAuthView: componentLoader.add(
     "ShortcutWebKeyAuthView",
@@ -28,9 +39,9 @@ const Components = {
     "ShortcutWebKeyP256DhView",
     path.resolve(__dirname, "./push_subscriptions/ShortcutWebKeyP256DhView")
   ),
-  ShortcutWebKeyP256DhShow: componentLoader.add(
-    "ShortcutWebKeyP256DhShow",
-    path.resolve(__dirname, "./push_subscriptions/ShortcutWebKeyP256DhShow")
+  BlockWebKeyP256DhShow: componentLoader.add(
+    "BlockWebKeyP256DhShow",
+    path.resolve(__dirname, "./push_subscriptions/BlockWebKeyP256DhShow")
   ),
 };
 
