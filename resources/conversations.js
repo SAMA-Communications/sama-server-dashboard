@@ -1,7 +1,8 @@
+import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import Schema from "./db/Shema.js";
 
+const collectionName = "conversations";
 const ConversationSchema = new Schema({
   name: String,
   type: String,
@@ -26,12 +27,12 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: ["name", "description"],
+  editProperties: fields.slice(1),
   showProperties: fields,
 };
 
 const Conversations = {
-  resource: dbProd.model("conversations", ConversationSchema),
+  resource: dbProd.model(collectionName, ConversationSchema),
   options: {
     id: "conversations",
     navigation: dbProdNavigation,
@@ -40,7 +41,7 @@ const Conversations = {
 };
 
 const Conversations_ = {
-  resource: dbDev.model("conversations", ConversationSchema),
+  resource: dbDev.model(collectionName, ConversationSchema),
   options: {
     id: "conversations_",
     navigation: dbDevNavigation,

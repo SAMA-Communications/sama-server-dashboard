@@ -1,7 +1,8 @@
+import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import Schema from "./db/Shema.js";
 
+const collectionName = "blocked_users";
 const BlockedUserSchema = new Schema({
   blocked_user_id: String,
   user_id: String,
@@ -20,12 +21,12 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: [],
+  editProperties: fields.slice(1),
   showProperties: fields,
 };
 
 const BlockedUsers = {
-  resource: dbProd.model("blocked_users", BlockedUserSchema),
+  resource: dbProd.model(collectionName, BlockedUserSchema),
   options: {
     id: "blocked_users",
     navigation: dbProdNavigation,
@@ -34,7 +35,7 @@ const BlockedUsers = {
 };
 
 const BlockedUsers_ = {
-  resource: dbDev.model("blocked_users", BlockedUserSchema),
+  resource: dbDev.model(collectionName, BlockedUserSchema),
   options: {
     id: "blocked_users_",
     navigation: dbDevNavigation,

@@ -1,7 +1,8 @@
+import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import Schema from "./db/Shema.js";
 
+const collectionName = "conversations_participants";
 const ConversationParticipantSchema = new Schema({
   conversation_id: String,
   user_id: String,
@@ -20,15 +21,12 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: [],
+  editProperties: fields.slice(1),
   showProperties: fields,
 };
 
 const ConversationParticipants = {
-  resource: dbProd.model(
-    "conversations_participants",
-    ConversationParticipantSchema
-  ),
+  resource: dbProd.model(collectionName, ConversationParticipantSchema),
   options: {
     id: "conversations_participants",
     navigation: dbProdNavigation,
@@ -37,10 +35,7 @@ const ConversationParticipants = {
 };
 
 const ConversationParticipants_ = {
-  resource: dbDev.model(
-    "conversations_participants",
-    ConversationParticipantSchema
-  ),
+  resource: dbDev.model(collectionName, ConversationParticipantSchema),
   options: {
     id: "conversations_participants_",
     navigation: dbDevNavigation,

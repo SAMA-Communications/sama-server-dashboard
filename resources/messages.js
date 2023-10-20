@@ -1,7 +1,8 @@
+import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import Schema from "./db/Shema.js";
 
+const collectionName = "messages";
 const MessageSchema = new Schema({
   t: Number,
   from: String,
@@ -28,12 +29,12 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: ["body", "x", "attachments"],
+  editProperties: fields.slice(1),
   showProperties: fields,
 };
 
 const Messages = {
-  resource: dbProd.model("messages", MessageSchema),
+  resource: dbProd.model(collectionName, MessageSchema),
   options: {
     id: "messages",
     navigation: dbProdNavigation,
@@ -42,7 +43,7 @@ const Messages = {
 };
 
 const Messages_ = {
-  resource: dbDev.model("messages", MessageSchema),
+  resource: dbDev.model(collectionName, MessageSchema),
   options: {
     id: "messages_",
     navigation: dbDevNavigation,

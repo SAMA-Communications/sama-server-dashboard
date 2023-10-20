@@ -1,8 +1,8 @@
 import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-// import { Components } from "../components/components.js";
 
+const collectionName = "users";
 const UserSchema = new Schema({
   login: String,
   email: String,
@@ -27,21 +27,14 @@ const fields = [
 ];
 
 const commonOptions = {
-  // properties: {
-  //   content: {
-  //     components: {
-  //       edit: Components.MyEditBlock,
-  //     },
-  //   },
-  // },
   listProperties: fields,
   filterProperties: fields,
-  editProperties: ["email", "phone", "first_name", "last_name"],
+  editProperties: fields.slice(1),
   showProperties: fields,
 };
 
 const Users = {
-  resource: dbProd.model("users", UserSchema),
+  resource: dbProd.model(collectionName, UserSchema),
   options: {
     id: "user",
     navigation: dbProdNavigation,
@@ -50,7 +43,7 @@ const Users = {
 };
 
 const Users_ = {
-  resource: dbDev.model("users", UserSchema),
+  resource: dbDev.model(collectionName, UserSchema),
   options: {
     id: "user_",
     navigation: dbDevNavigation,

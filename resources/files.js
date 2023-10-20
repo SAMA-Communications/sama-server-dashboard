@@ -1,7 +1,8 @@
+import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import Schema from "./db/Shema.js";
 
+const collectionName = "files";
 const FileSchema = new Schema({
   name: String,
   size: String,
@@ -24,12 +25,12 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: ["name", "size", "content_type", "object_id"],
+  editProperties: fields.slice(1),
   showProperties: fields,
 };
 
 const Files = {
-  resource: dbProd.model("files", FileSchema),
+  resource: dbProd.model(collectionName, FileSchema),
   options: {
     id: "files",
     navigation: dbProdNavigation,
@@ -38,7 +39,7 @@ const Files = {
 };
 
 const Files_ = {
-  resource: dbDev.model("files", FileSchema),
+  resource: dbDev.model(collectionName, FileSchema),
   options: {
     id: "files_",
     navigation: dbDevNavigation,

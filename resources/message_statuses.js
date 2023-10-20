@@ -1,7 +1,8 @@
+import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import Schema from "./db/Shema.js";
 
+const collectionName = "message_statuses";
 const MessageStatusSchema = new Schema({
   cid: String,
   mid: String,
@@ -24,12 +25,12 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: ["status"],
+  editProperties: fields.slice(1),
   showProperties: fields,
 };
 
 const MessageStatuses = {
-  resource: dbProd.model("message_statuses", MessageStatusSchema),
+  resource: dbProd.model(collectionName, MessageStatusSchema),
   options: {
     id: "message_statuses",
     navigation: dbProdNavigation,
@@ -38,7 +39,7 @@ const MessageStatuses = {
 };
 
 const MessageStatuses_ = {
-  resource: dbDev.model("message_statuses", MessageStatusSchema),
+  resource: dbDev.model(collectionName, MessageStatusSchema),
   options: {
     id: "message_statuses_",
     navigation: dbDevNavigation,

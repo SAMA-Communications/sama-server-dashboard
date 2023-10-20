@@ -1,7 +1,8 @@
+import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import Schema from "./db/Shema.js";
 
+const collectionName = "cluster_nodes";
 const ClusterNodeSchema = new Schema({
   ip_address: String,
   hostname: String,
@@ -24,12 +25,12 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: ["ip_address", "hostname", "port", "users_count"],
+  editProperties: fields.slice(1),
   showProperties: fields,
 };
 
 const ClusterNodes = {
-  resource: dbProd.model("cluster_nodes", ClusterNodeSchema),
+  resource: dbProd.model(collectionName, ClusterNodeSchema),
   options: {
     id: "cluster_nodes",
     navigation: dbProdNavigation,
@@ -38,7 +39,7 @@ const ClusterNodes = {
 };
 
 const ClusterNodes_ = {
-  resource: dbDev.model("cluster_nodes", ClusterNodeSchema),
+  resource: dbDev.model(collectionName, ClusterNodeSchema),
   options: {
     id: "cluster_nodes_",
     navigation: dbDevNavigation,

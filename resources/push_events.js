@@ -1,7 +1,8 @@
+import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import Schema from "./db/Shema.js";
 
+const collectionName = "push_events";
 const PushEventSchema = new Schema({
   user_id: String,
   recipients_ids: Array, // check
@@ -22,12 +23,12 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: ["recipients_ids", "message"],
+  editProperties: fields.slice(1),
   showProperties: fields,
 };
 
 const PushEvents = {
-  resource: dbProd.model("push_events", PushEventSchema),
+  resource: dbProd.model(collectionName, PushEventSchema),
   options: {
     id: "push_events",
     navigation: dbProdNavigation,
@@ -36,7 +37,7 @@ const PushEvents = {
 };
 
 const PushEvents_ = {
-  resource: dbDev.model("push_events", PushEventSchema),
+  resource: dbDev.model(collectionName, PushEventSchema),
   options: {
     id: "push_events_",
     navigation: dbDevNavigation,

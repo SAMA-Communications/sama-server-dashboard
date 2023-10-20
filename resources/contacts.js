@@ -1,7 +1,8 @@
+import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import Schema from "./db/Shema.js";
 
+const collectionName = "contacts";
 const ContactSchema = new Schema({
   first_name: String,
   last_name: String,
@@ -26,12 +27,12 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: ["first_name", "last_name", "company", "email", "phone"],
+  editProperties: fields.slice(1),
   showProperties: fields,
 };
 
 const Contacts = {
-  resource: dbProd.model("contacts", ContactSchema),
+  resource: dbProd.model(collectionName, ContactSchema),
   options: {
     id: "contacts",
     navigation: dbProdNavigation,
@@ -40,7 +41,7 @@ const Contacts = {
 };
 
 const Contacts_ = {
-  resource: dbDev.model("contacts", ContactSchema),
+  resource: dbDev.model(collectionName, ContactSchema),
   options: {
     id: "contacts_",
     navigation: dbDevNavigation,
