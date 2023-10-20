@@ -1,3 +1,4 @@
+import { Components } from "../components/components.js";
 import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
@@ -31,6 +32,28 @@ const commonOptions = {
   filterProperties: fields,
   editProperties: fields.slice(1),
   showProperties: fields,
+  properties: {
+    web_endpoint: {
+      type: "string",
+      components: {
+        list: Components.ShortcutWebEndpointView,
+        show: Components.ShortcutWebEndpointShow,
+      },
+    },
+    web_key_auth: {
+      type: "string",
+      components: {
+        list: Components.ShortcutWebKeyAuthView,
+      },
+    },
+    web_key_p256dh: {
+      type: "string",
+      components: {
+        list: Components.ShortcutWebKeyP256DhView,
+        show: Components.ShortcutWebKeyP256DhShow,
+      },
+    },
+  },
 };
 
 const PushSubscriptions = {

@@ -32,6 +32,14 @@ const commonOptions = {
   filterProperties: fields,
   editProperties: fields.slice(1),
   showProperties: fields,
+  properties: {
+    _id: {
+      type: "string",
+      components: {
+        list: Components.ShortcutIdView,
+      },
+    },
+  },
 };
 
 const Users = {
@@ -40,14 +48,6 @@ const Users = {
     id: "user",
     navigation: dbProdNavigation,
     ...commonOptions,
-    properties: {
-      _id: {
-        type: "string",
-        components: {
-          list: Components.UserIdFieldView,
-        },
-      },
-    },
   },
 };
 
