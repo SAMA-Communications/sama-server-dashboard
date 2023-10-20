@@ -28,7 +28,11 @@ export default function BlockFomShow({ record, resource }) {
       >
         From (UID)
       </label>
-      <Link to={`/resources/users/records/${currentFrom}/show`}>
+      <Link
+        to={`/resources/users${
+          resource.id.includes("_") ? "_" : ""
+        }/records/${currentFrom}/show`}
+      >
         {currentFrom}
       </Link>
     </section>

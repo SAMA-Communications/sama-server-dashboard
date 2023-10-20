@@ -29,7 +29,9 @@ export default function BlockConversationIdShow({ record, resource }) {
         Conversation Id
       </label>
       <Link
-        to={`/resources/conversations/records/${currentConversationId}/show`}
+        to={`/resources/conversations${
+          resource.id.includes("_") ? "_" : ""
+        }/records/${currentConversationId}/show`}
       >
         {currentConversationId}
       </Link>

@@ -28,7 +28,11 @@ export default function BlockCidShow({ record, resource }) {
       >
         Conversation Id (CID)
       </label>
-      <Link to={`/resources/conversations/records/${currentCid}/show`}>
+      <Link
+        to={`/resources/conversations${
+          resource.id.includes("_") ? "_" : ""
+        }/records/${currentCid}/show`}
+      >
         {currentCid}
       </Link>
     </section>

@@ -28,7 +28,11 @@ export default function BlockOwnerIdShow({ record, resource }) {
       >
         Owner Id
       </label>
-      <Link to={`/resources/users/records/${currentOwnerId}/show`}>
+      <Link
+        to={`/resources/users${
+          resource.id.includes("_") ? "_" : ""
+        }/records/${currentOwnerId}/show`}
+      >
         {currentOwnerId}
       </Link>
     </section>
