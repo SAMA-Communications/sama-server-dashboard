@@ -4,9 +4,6 @@ import dotenv from "dotenv";
 import express from "express";
 import { Resource, Database } from "@adminjs/mongoose";
 
-// -- custom components
-import { Components, componentLoader } from "./components/components.js";
-
 // -- resources
 import { Users, Users_ } from "./resources/users.js";
 import { UserTokens, UserTokens_ } from "./resources/user_tokens.js";
@@ -43,11 +40,6 @@ const start = async () => {
     branding: {
       companyName: "SAMA",
     },
-
-    // dashboard: {
-    //   component: Components.Dashboard,
-    // },
-    // componentLoader,
 
     resources: [
       ...[Users, Users_],
