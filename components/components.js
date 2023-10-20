@@ -60,6 +60,22 @@ const Components = {
     "BlockWebKeyP256DhShow",
     path.resolve(__dirname, "./push_subscriptions/BlockWebKeyP256DhShow")
   ),
+  // -- conversations_participants
+  ShortcutIdViewCP: componentLoader.add(
+    "ShortcutIdViewCP",
+    path.resolve(__dirname, "./conversations_participants/ShortcutIdView")
+  ),
+  BlockConversationIdShow: componentLoader.add(
+    "BlockConversationIdShow",
+    path.resolve(
+      __dirname,
+      "./conversations_participants/BlockConversationIdShow"
+    )
+  ),
+  BlockUserIdShow: componentLoader.add(
+    "BlockUserIdShow",
+    path.resolve(__dirname, "./conversations_participants/BlockUserIdShow")
+  ),
 };
 
 export { componentLoader, Components };

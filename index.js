@@ -20,9 +20,9 @@ import {
 import { Files, Files_ } from "./resources/files.js";
 import { Conversations, Conversations_ } from "./resources/conversations.js";
 import {
-  ConversationParticipants,
-  ConversationParticipants_,
-} from "./resources/conversation_participants.js";
+  ConversationsParticipants,
+  ConversationsParticipants_,
+} from "./resources/conversations_participants.js";
 import { Contacts, Contacts_ } from "./resources/contacts.js";
 import { ClusterNodes, ClusterNodes_ } from "./resources/cluster_nodes.js";
 import { BlockedUsers, BlockedUsers_ } from "./resources/blocked_users.js";
@@ -55,7 +55,7 @@ const start = async () => {
       ...[MessageStatuses, MessageStatuses_],
       ...[Files, Files_],
       ...[Conversations, Conversations_],
-      ...[ConversationParticipants, ConversationParticipants_],
+      ...[ConversationsParticipants, ConversationsParticipants_],
       ...[Contacts, Contacts_],
       ...[ClusterNodes, ClusterNodes_],
       ...[BlockedUsers, BlockedUsers_],

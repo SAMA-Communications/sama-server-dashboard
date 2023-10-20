@@ -45,7 +45,7 @@ const commonOptions = {
 const Users = {
   resource: dbProd.model(collectionName, UserSchema),
   options: {
-    id: "user",
+    id: "users",
     navigation: dbProdNavigation,
     ...commonOptions,
   },
@@ -54,7 +54,7 @@ const Users = {
 const Users_ = {
   resource: dbDev.model(collectionName, UserSchema),
   options: {
-    id: "user_",
+    id: "users_",
     navigation: dbDevNavigation,
     ...commonOptions,
   },
