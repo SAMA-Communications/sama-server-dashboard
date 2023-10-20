@@ -1,7 +1,18 @@
+import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 // import { Components } from "../components/components.js";
-import { UserSchema } from "../schemas/user.js";
+
+const UserSchema = new Schema({
+  login: String,
+  email: String,
+  phone: String,
+  recent_activity: Number,
+  first_name: String,
+  last_name: String,
+  updated_at: Date,
+  created_at: Date,
+});
 
 const fields = [
   "_id",

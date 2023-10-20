@@ -1,6 +1,15 @@
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import { MessageStatusSchema } from "../schemas/message_status.js";
+import Schema from "./db/Shema.js";
+
+const MessageStatusSchema = new Schema({
+  cid: String,
+  mid: String,
+  user_id: String,
+  status: String,
+  updated_at: Date,
+  created_at: Date,
+});
 
 const fields = [
   "_id",

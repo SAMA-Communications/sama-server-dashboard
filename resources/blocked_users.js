@@ -1,6 +1,13 @@
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import { BlockedUserSchema } from "../schemas/blocked_user.js";
+import Schema from "./db/Shema.js";
+
+const BlockedUserSchema = new Schema({
+  blocked_user_id: String,
+  user_id: String,
+  updated_at: Date,
+  created_at: Date,
+});
 
 const fields = [
   "_id",

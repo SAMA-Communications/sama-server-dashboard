@@ -1,6 +1,14 @@
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import { PushEventSchema } from "../schemas/push_event.js";
+import Schema from "./db/Shema.js";
+
+const PushEventSchema = new Schema({
+  user_id: String,
+  recipients_ids: Array, // check
+  message: Object, // check
+  updated_at: Date,
+  created_at: Date,
+});
 
 const fields = [
   "_id",

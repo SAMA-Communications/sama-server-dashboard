@@ -1,6 +1,17 @@
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import { PushSubscriptionSchema } from "../schemas/push_subscription.js";
+import Schema from "./db/Shema.js";
+
+const PushSubscriptionSchema = new Schema({
+  user_id: String,
+  platform: String,
+  web_endpoint: String,
+  web_key_auth: String,
+  web_key_p256dh: String,
+  device_udid: String,
+  updated_at: Date,
+  created_at: Date,
+});
 
 const fields = [
   "_id",

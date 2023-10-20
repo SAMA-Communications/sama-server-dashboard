@@ -1,6 +1,17 @@
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import { MessageSchema } from "../schemas/message.js";
+import Schema from "./db/Shema.js";
+
+const MessageSchema = new Schema({
+  t: Number,
+  from: String,
+  body: String,
+  cid: String,
+  x: String,
+  attachments: Array,
+  updated_at: Date,
+  created_at: Date,
+});
 
 const fields = [
   "_id",

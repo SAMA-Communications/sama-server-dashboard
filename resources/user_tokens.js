@@ -1,22 +1,16 @@
+import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import { UserTokenSchema } from "../schemas/user_token.js";
 
-const fields = [
-  "_id",
-  "user_id",
-  "device_id",
-  "token",
-  "updated_at",
-  "created_at",
-];
+const UserTokenSchema = new Schema({
+  user_id: String,
+  device_id: String,
+  token: String,
+  updated_at: Date,
+  created_at: Date,
+});
 
-const commonOptions = {
-  listProperties: fields,
-  filterProperties: fields,
-  editProperties: ["token"],
-  showProperties: fields,
-};
+const commonOptions = {};
 
 const UserTokens = {
   resource: dbProd.model("user_tokens", UserTokenSchema),

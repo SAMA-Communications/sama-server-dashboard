@@ -1,6 +1,16 @@
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import { ContactSchema } from "../schemas/contact.js";
+import Schema from "./db/Shema.js";
+
+const ContactSchema = new Schema({
+  first_name: String,
+  last_name: String,
+  company: String,
+  email: String,
+  phone: String,
+  updated_at: Date,
+  created_at: Date,
+});
 
 const fields = [
   "_id",

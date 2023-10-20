@@ -1,6 +1,15 @@
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import { ClusterNodeSchema } from "../schemas/cluster_node.js";
+import Schema from "./db/Shema.js";
+
+const ClusterNodeSchema = new Schema({
+  ip_address: String,
+  hostname: String,
+  port: String,
+  users_count: String,
+  updated_at: Date,
+  created_at: Date,
+});
 
 const fields = [
   "_id",

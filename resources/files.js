@@ -1,6 +1,15 @@
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
-import { FileSchema } from "../schemas/file.js";
+import Schema from "./db/Shema.js";
+
+const FileSchema = new Schema({
+  name: String,
+  size: String,
+  content_type: String,
+  object_id: String,
+  updated_at: Date,
+  created_at: Date,
+});
 
 const fields = [
   "_id",
