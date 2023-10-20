@@ -39,6 +39,20 @@ const commonOptions = {
         list: Components.ShortcutIdView,
       },
     },
+    email: {
+      type: "string",
+      components: {
+        list: Components.ShortcutEmailView,
+        show: Components.BlockEmailShow,
+      },
+    },
+    phone: {
+      type: "string",
+      components: {
+        list: Components.ShortcutPhoneView,
+        show: Components.BlockPhoneShow,
+      },
+    },
   },
 };
 

@@ -13,6 +13,22 @@ const Components = {
     "ShortcutIdView",
     path.resolve(__dirname, "./users/ShortcutIdView")
   ),
+  BlockEmailShow: componentLoader.add(
+    "BlockEmailShow",
+    path.resolve(__dirname, "./users/BlockEmailShow")
+  ),
+  BlockPhoneShow: componentLoader.add(
+    "BlockPhoneShow",
+    path.resolve(__dirname, "./users/BlockPhoneShow")
+  ),
+  ShortcutEmailView: componentLoader.add(
+    "ShortcutEmailView",
+    path.resolve(__dirname, "./users/ShortcutEmailView")
+  ),
+  ShortcutPhoneView: componentLoader.add(
+    "ShortcutPhoneView",
+    path.resolve(__dirname, "./users/ShortcutPhoneView")
+  ),
   // -- user_tokens
   BlockTokenShow: componentLoader.add(
     "BlockTokenShow",
