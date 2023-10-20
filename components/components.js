@@ -94,6 +94,31 @@ const Components = {
     "BlockUserIdShow",
     path.resolve(__dirname, "./conversations_participants/BlockUserIdShow")
   ),
+  // -- conversations
+  ShortcutDescriptionView: componentLoader.add(
+    "ShortcutDescriptionView",
+    path.resolve(__dirname, "./conversations/ShortcutDescriptionView")
+  ),
+  BlockDescriptionShow: componentLoader.add(
+    "BlockDescriptionShow",
+    path.resolve(__dirname, "./conversations/BlockDescriptionShow")
+  ),
+  BlockOwnerIdShow: componentLoader.add(
+    "BlockOwnerIdShow",
+    path.resolve(__dirname, "./conversations/BlockOwnerIdShow")
+  ),
+  BlockOpponentIdShow: componentLoader.add(
+    "BlockOpponentIdShow",
+    path.resolve(__dirname, "./conversations/BlockOpponentIdShow")
+  ),
+  ShortcutTypeView: componentLoader.add(
+    "ShortcutTypeView",
+    path.resolve(__dirname, "./conversations/ShortcutTypeView")
+  ),
+  BlockTypeShow: componentLoader.add(
+    "BlockTypeShow",
+    path.resolve(__dirname, "./conversations/BlockTypeShow")
+  ),
 };
 
 export { componentLoader, Components };

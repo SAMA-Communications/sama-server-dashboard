@@ -1,6 +1,7 @@
 import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
+import { Components } from "../components/components.js";
 
 const collectionName = "conversations";
 const ConversationSchema = new Schema({
@@ -29,6 +30,40 @@ const commonOptions = {
   filterProperties: fields,
   editProperties: fields.slice(1),
   showProperties: fields,
+  properties: {
+    _id: {
+      type: "string",
+      components: {
+        list: Components.ShortcutIdView,
+      },
+    },
+    description: {
+      type: "string",
+      components: {
+        list: Components.ShortcutDescriptionView,
+        show: Components.BlockDescriptionShow,
+      },
+    },
+    owner_id: {
+      type: "string",
+      components: {
+        show: Components.BlockOwnerIdShow,
+      },
+    },
+    opponent_id: {
+      type: "string",
+      components: {
+        show: Components.BlockOpponentIdShow,
+      },
+    },
+    type: {
+      type: "string",
+      components: {
+        list: Components.ShortcutTypeView,
+        show: Components.BlockTypeShow,
+      },
+    },
+  },
 };
 
 const Conversations = {
