@@ -28,7 +28,7 @@ const commonOptions = {
     _id: {
       type: "string",
       components: {
-        list: Components.ShortcutIdViewCP,
+        list: Components.ShortcutIdView,
       },
     },
     conversation_id: {

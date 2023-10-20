@@ -34,6 +34,12 @@ const commonOptions = {
         show: Components.BlockTokenShow,
       },
     },
+    user_id: {
+      type: "string",
+      components: {
+        show: Components.BlockUserIdShow,
+      },
+    },
   },
 };
 

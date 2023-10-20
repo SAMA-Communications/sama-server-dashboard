@@ -39,6 +39,19 @@ const Components = {
     "BlockAttachmentsShow",
     path.resolve(__dirname, "./messages/BlockAttachmentsShow")
   ),
+  BlockFromShow: componentLoader.add(
+    "BlockFromShow",
+    path.resolve(__dirname, "./messages/BlockFromShow")
+  ),
+  BlockCidShow: componentLoader.add(
+    "BlockCidShow",
+    path.resolve(__dirname, "./messages/BlockCidShow")
+  ),
+  // -- message_statuses
+  BlockMidShow: componentLoader.add(
+    "BlockMidShow",
+    path.resolve(__dirname, "./message_statuses/BlockMidShow")
+  ),
   // -- push_subscriptions
   ShortcutWebEndpointView: componentLoader.add(
     "ShortcutWebEndpointView",
@@ -61,10 +74,6 @@ const Components = {
     path.resolve(__dirname, "./push_subscriptions/BlockWebKeyP256DhShow")
   ),
   // -- conversations_participants
-  ShortcutIdViewCP: componentLoader.add(
-    "ShortcutIdViewCP",
-    path.resolve(__dirname, "./conversations_participants/ShortcutIdView")
-  ),
   BlockConversationIdShow: componentLoader.add(
     "BlockConversationIdShow",
     path.resolve(

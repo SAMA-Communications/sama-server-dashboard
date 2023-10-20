@@ -47,6 +47,18 @@ const commonOptions = {
         show: Components.BlockAttachmentsShow,
       },
     },
+    from: {
+      type: "string",
+      components: {
+        show: Components.BlockFromShow,
+      },
+    },
+    cid: {
+      type: "string",
+      components: {
+        show: Components.BlockCidShow,
+      },
+    },
   },
 };
 

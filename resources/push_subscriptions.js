@@ -37,7 +37,7 @@ const commonOptions = {
       type: "string",
       components: {
         list: Components.ShortcutWebEndpointView,
-        show: Components.ShortcutWebEndpointShow,
+        show: Components.BlockWebEndpointShow,
       },
     },
     web_key_auth: {
@@ -50,7 +50,13 @@ const commonOptions = {
       type: "string",
       components: {
         list: Components.ShortcutWebKeyP256DhView,
-        show: Components.ShortcutWebKeyP256DhShow,
+        show: Components.BlockWebKeyP256DhShow,
+      },
+    },
+    user_id: {
+      type: "string",
+      components: {
+        show: Components.BlockUserIdShow,
       },
     },
   },

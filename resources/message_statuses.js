@@ -1,6 +1,7 @@
 import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
+import { Components } from "../components/components.js";
 
 const collectionName = "message_statuses";
 const MessageStatusSchema = new Schema({
@@ -27,6 +28,32 @@ const commonOptions = {
   filterProperties: fields,
   editProperties: fields.slice(1),
   showProperties: fields,
+  properties: {
+    _id: {
+      type: "string",
+      components: {
+        list: Components.ShortcutIdView,
+      },
+    },
+    mid: {
+      type: "string",
+      components: {
+        show: Components.BlockMidShow,
+      },
+    },
+    user_id: {
+      type: "string",
+      components: {
+        show: Components.BlockUserIdShow,
+      },
+    },
+    cid: {
+      type: "string",
+      components: {
+        show: Components.BlockCidShow,
+      },
+    },
+  },
 };
 
 const MessageStatuses = {
