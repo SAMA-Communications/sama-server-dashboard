@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-export default function BlockMidShow({ record, resource }) {
-  const currentMid = record.params.mid;
+export default function BlockObjectIdShow({ record, resource }) {
+  const currentObjectId = record.params.object_id;
 
   return (
     <section
@@ -26,11 +26,9 @@ export default function BlockMidShow({ record, resource }) {
           fontWeight: 300,
         }}
       >
-        Mid
+        Object Id
       </label>
-      <Link to={`/resources/messages/records/${currentMid}/show`}>
-        {currentMid}
-      </Link>
+      <p style={{ overflowWrap: "break-word" }}>{currentObjectId}</p>
     </section>
   );
 }

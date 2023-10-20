@@ -52,6 +52,15 @@ const Components = {
     "BlockMidShow",
     path.resolve(__dirname, "./message_statuses/BlockMidShow")
   ),
+  // -- files
+  BlockObjectIdShow: componentLoader.add(
+    "BlockObjectIdShow",
+    path.resolve(__dirname, "./files/BlockObjectIdShow")
+  ),
+  ShortcutObjectIdView: componentLoader.add(
+    "ShortcutObjectIdView",
+    path.resolve(__dirname, "./files/ShortcutObjectIdView")
+  ),
   // -- push_subscriptions
   ShortcutWebEndpointView: componentLoader.add(
     "ShortcutWebEndpointView",

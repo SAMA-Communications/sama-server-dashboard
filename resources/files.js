@@ -1,6 +1,7 @@
 import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
+import { Components } from "../components/components.js";
 
 const collectionName = "files";
 const FileSchema = new Schema({
@@ -27,6 +28,15 @@ const commonOptions = {
   filterProperties: fields,
   editProperties: fields.slice(1),
   showProperties: fields,
+  properties: {
+    object_id: {
+      type: "string",
+      components: {
+        list: Components.ShortcutObjectIdView,
+        show: Components.BlockObjectIdShow,
+      },
+    },
+  },
 };
 
 const Files = {
