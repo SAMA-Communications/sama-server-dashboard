@@ -22,6 +22,23 @@ const Components = {
     "ShortcutTokenView",
     path.resolve(__dirname, "./user_tokens/ShortcutTokenView")
   ),
+  // -- messages
+  ShortcutBodyView: componentLoader.add(
+    "ShortcutBodyView",
+    path.resolve(__dirname, "./messages/ShortcutBodyView")
+  ),
+  BlockBodyShow: componentLoader.add(
+    "BlockBodyShow",
+    path.resolve(__dirname, "./messages/BlockBodyShow")
+  ),
+  ShortcutAttachmentsView: componentLoader.add(
+    "ShortcutAttachmentsView",
+    path.resolve(__dirname, "./messages/ShortcutAttachmentsView")
+  ),
+  BlockAttachmentsShow: componentLoader.add(
+    "BlockAttachmentsShow",
+    path.resolve(__dirname, "./messages/BlockAttachmentsShow")
+  ),
   // -- push_subscriptions
   ShortcutWebEndpointView: componentLoader.add(
     "ShortcutWebEndpointView",

@@ -1,6 +1,7 @@
 import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
+import { Components } from "../components/components.js";
 
 const collectionName = "messages";
 const MessageSchema = new Schema({
@@ -8,7 +9,7 @@ const MessageSchema = new Schema({
   from: String,
   body: String,
   cid: String,
-  x: String,
+  x: Object,
   attachments: Array,
   updated_at: Date,
   created_at: Date,
@@ -31,6 +32,22 @@ const commonOptions = {
   filterProperties: fields,
   editProperties: fields.slice(1),
   showProperties: fields,
+  properties: {
+    body: {
+      type: "string",
+      components: {
+        list: Components.ShortcutBodyView,
+        show: Components.BlockBodyShow,
+      },
+    },
+    attachments: {
+      type: "string",
+      components: {
+        list: Components.ShortcutAttachmentsView,
+        show: Components.BlockAttachmentsShow,
+      },
+    },
+  },
 };
 
 const Messages = {
