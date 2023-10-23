@@ -73,8 +73,12 @@ const start = async () => {
       logo: "https://github-production-user-asset-6210df.s3.amazonaws.com/98953475/277474840-f587d6fb-ea42-4205-91e4-701ca9f512ec.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231023%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231023T205409Z&X-Amz-Expires=300&X-Amz-Signature=469997d2cc252c5a90716ac7f5863d51642ec2469ebe691e8c5be858715791c7&X-Amz-SignedHeaders=host&actor_id=98953475&key_id=0&repo_id=702441555",
     },
 
+    locale: {
+      debug: false,
+    },
+
     assets: {
-      styles: ["/index.css"],
+      styles: ["./index.css"],
     },
   };
   const admin = new AdminJS(adminOptions);
