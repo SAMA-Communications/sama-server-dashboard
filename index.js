@@ -1,7 +1,9 @@
+import * as url from "url";
 import AdminJS from "adminjs";
 import AdminJSExpress from "@adminjs/express";
 import dotenv from "dotenv";
 import express from "express";
+import path from "path";
 import { ObjectId } from "./resources/db/ObjectId.js";
 import { Resource, Database } from "@adminjs/mongoose";
 
@@ -47,21 +49,22 @@ const start = async () => {
     // },
     componentLoader,
 
-    // branding: {
-    //   companyName: "SAMA",
-    //   softwareBrothers: false,
-    //   logo: "./assets/logo.png",
-    // },
-    // locale: {
-    //   translations: {
-    //     messages: {
-    //       loginWelcome: "1", // the smaller text
-    //     },
-    //     labels: {
-    //       loginWelcome: "2", // this could be your project name
-    //     },
-    //   },
-    // },
+    branding: {
+      companyName: "SAMA",
+      softwareBrothers: false,
+      // logo: false,
+      // logo: `C:/Users/olexa/OneDrive/Desktop/ProjectMain/sama-server-dashboard/assets/logo.png`,
+    },
+    locale: {
+      translations: {
+        messages: {
+          loginWelcome: "1", // the smaller text
+        },
+        labels: {
+          loginWelcome: "2", // this could be your project name
+        },
+      },
+    },
 
     resources: [
       ...[Users, Users_],
@@ -77,6 +80,10 @@ const start = async () => {
       ...[ClusterNodes, ClusterNodes_],
       ...[BlockedUsers, BlockedUsers_],
     ],
+
+    assets: {
+      styles: ["/index.css"],
+    },
   };
   const admin = new AdminJS(adminOptions);
 
@@ -113,6 +120,9 @@ const start = async () => {
 
     res.send(participants);
   });
+
+  const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
+  app.use(express.static(path.join(__dirname, "/styles")));
 
   app.listen(process.env.APP_PORT, () => {
     console.log(
