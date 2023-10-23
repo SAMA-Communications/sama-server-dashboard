@@ -4,7 +4,7 @@ export default function ShortcutDescriptionView({ record, resource }) {
   const [participantsData, setParticipantsData] = useState(null);
 
   useEffect(() => {
-    if (!participantsData || record.params.participants.length > 0) {
+    if (!participantsData || record.params.participants?.length > 0) {
       return;
     }
 
