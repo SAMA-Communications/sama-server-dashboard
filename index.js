@@ -52,7 +52,7 @@ const start = async () => {
     branding: {
       companyName: "SAMA",
       softwareBrothers: false,
-      logo: `https://raw.githubusercontent.com/SAMA-Communications/sama-server-dashboard/main/assets/logo.png?token=GHSAT0AAAAAACHYG45VOXOWSNZJB2B3UWB2ZJW2WLA`,
+      logo: `https://raw.githubusercontent.com/SAMA-Communications/sama-server-dashboard/main/assets/logo.png?token=GHSAT0AAAAAACHYG45VEIRBBPHQGMHDHASKZJW22XA`,
     },
     locale: {
       translations: {
