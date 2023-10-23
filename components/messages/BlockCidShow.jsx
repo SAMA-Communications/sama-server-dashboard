@@ -30,7 +30,7 @@ export default function BlockCidShow({ record, resource }) {
       </label>
       <Link
         to={`/resources/conversations${
-          resource.id.includes("_") ? "_" : ""
+          resource.id.charAt(resource.id.length - 1) === "_" ? "_" : ""
         }/records/${currentCid}/show`}
       >
         {currentCid}

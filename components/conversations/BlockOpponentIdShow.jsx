@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function BlockOpponentIdShow({ record, resource }) {
   const currentOpponentId = record.params.opponent_id;
-  console.log(record);
+
   return (
     <section
       style={{
@@ -30,7 +30,7 @@ export default function BlockOpponentIdShow({ record, resource }) {
       </label>
       <Link
         to={`/resources/users${
-          resource.id.includes("_") ? "_" : ""
+          resource.id.charAt(resource.id.length - 1) === "_" ? "_" : ""
         }/records/${currentOpponentId}/show`}
       >
         {currentOpponentId}

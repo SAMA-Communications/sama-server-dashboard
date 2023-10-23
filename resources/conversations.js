@@ -10,6 +10,7 @@ const ConversationSchema = new Schema({
   description: String,
   owner_id: String,
   opponent_id: String,
+  participants: Array,
   updated_at: Date,
   created_at: Date,
 });
@@ -21,6 +22,7 @@ const fields = [
   "description",
   "owner_id",
   "opponent_id",
+  "participants",
   "updated_at",
   "created_at",
 ];

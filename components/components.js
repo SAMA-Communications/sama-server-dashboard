@@ -135,6 +135,10 @@ const Components = {
     "BlockTypeShow",
     path.resolve(__dirname, "./conversations/BlockTypeShow")
   ),
+  BlockParticipantsShow: componentLoader.add(
+    "BlockParticipantsShow",
+    path.resolve(__dirname, "./conversations/BlockParticipantsShow")
+  ),
 };
 
 export { componentLoader, Components };

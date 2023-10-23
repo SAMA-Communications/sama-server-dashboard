@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-export default function BlockOwnerIdShow({ record, resource }) {
-  const currentOwnerId = record.params.owner_id;
+export default async function BlockParticipantsShow({ record, resource }) {
+  const currentOpponentId = record.params.opponent_id;
 
   return (
     <section
@@ -26,14 +26,14 @@ export default function BlockOwnerIdShow({ record, resource }) {
           fontWeight: 300,
         }}
       >
-        Owner Id
+        Participants
       </label>
       <Link
         to={`/resources/users${
           resource.id.charAt(resource.id.length - 1) === "_" ? "_" : ""
-        }/records/${currentOwnerId}/show`}
+        }/records/${currentOpponentId}/show`}
       >
-        {currentOwnerId}
+        {currentOpponentId}
       </Link>
     </section>
   );

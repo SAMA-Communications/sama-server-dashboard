@@ -30,7 +30,7 @@ export default function BlockMidShow({ record, resource }) {
       </label>
       <Link
         to={`/resources/messages${
-          resource.id.includes("_") ? "_" : ""
+          resource.id.charAt(resource.id.length - 1) === "_" ? "_" : ""
         }/records/${currentMid}/show`}
       >
         {currentMid}

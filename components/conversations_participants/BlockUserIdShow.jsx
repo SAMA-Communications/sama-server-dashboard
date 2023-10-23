@@ -30,7 +30,7 @@ export default function BlockUserIdShow({ record, resource }) {
       </label>
       <Link
         to={`/resources/users${
-          resource.id.includes("_") ? "_" : ""
+          resource.id.charAt(resource.id.length - 1) === "_" ? "_" : ""
         }/records/${currentUserId}/show`}
       >
         {currentUserId}

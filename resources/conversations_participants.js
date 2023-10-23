@@ -4,7 +4,7 @@ import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { Components } from "../components/components.js";
 
 const collectionName = "conversations_participants";
-const ConversationsParticipantSchema = new Schema({
+export const ConversationsParticipantSchema = new Schema({
   conversation_id: String,
   user_id: String,
   updated_at: Date,

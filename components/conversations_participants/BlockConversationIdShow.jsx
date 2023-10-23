@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function BlockConversationIdShow({ record, resource }) {
   const currentConversationId = record.params.conversation_id;
-
+  console.log(resource.id.includes("_"));
   return (
     <section
       style={{
@@ -30,7 +30,7 @@ export default function BlockConversationIdShow({ record, resource }) {
       </label>
       <Link
         to={`/resources/conversations${
-          resource.id.includes("_") ? "_" : ""
+          resource.id.charAt(resource.id.length - 1) === "_" ? "_" : ""
         }/records/${currentConversationId}/show`}
       >
         {currentConversationId}
