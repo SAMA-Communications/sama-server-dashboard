@@ -53,7 +53,7 @@ const start = async () => {
       companyName: "SAMA",
       softwareBrothers: false,
       // logo: false,
-      // logo: `C:/Users/olexa/OneDrive/Desktop/ProjectMain/sama-server-dashboard/assets/logo.png`,
+      logo: `C:/Users/olexa/OneDrive/Desktop/ProjectMain/sama-server-dashboard/assets/logo.png`,
     },
     locale: {
       translations: {
