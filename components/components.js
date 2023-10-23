@@ -8,6 +8,11 @@ const __dirname = path.dirname(__filename);
 const componentLoader = new ComponentLoader();
 
 const Components = {
+  // -- dashboard
+  Dashboard: componentLoader.add(
+    "Dashboard",
+    path.resolve(__dirname, "./dashboard/Dashboard")
+  ),
   // -- users
   ShortcutIdView: componentLoader.add(
     "ShortcutIdView",
