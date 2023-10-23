@@ -2,10 +2,11 @@ import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { Components } from "../components/components.js";
+import { ObjectId } from "./db/ObjectId.js";
 
 const collectionName = "conversations_participants";
 export const ConversationsParticipantSchema = new Schema({
-  conversation_id: String,
+  conversation_id: ObjectId,
   user_id: String,
   updated_at: Date,
   created_at: Date,

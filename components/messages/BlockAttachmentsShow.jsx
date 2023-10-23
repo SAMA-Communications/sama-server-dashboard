@@ -17,6 +17,7 @@ export default function BlockAttachmentsShow({ record, resource }) {
       Object.values(currentAttachments).map((att, index) => {
         return (
           <section
+            key={att.file_id}
             style={{
               boxSizing: "border-box",
               minWidth: "0px",
@@ -24,7 +25,8 @@ export default function BlockAttachmentsShow({ record, resource }) {
               lineHeight: "16px",
               fontSize: "14px",
               fontWeight: "normal",
-              marginBottom: "24px",
+              marginBottom: "16px",
+              display: "flex",
             }}
           >
             <label
@@ -35,13 +37,40 @@ export default function BlockAttachmentsShow({ record, resource }) {
                 lineHeight: "16px",
                 color: "rgb(137, 138, 154)",
                 marginBottom: "4px",
+                paddingRight: "10px",
                 fontWeight: 300,
               }}
             >
-              {index + 1}
+              {index + 1}:
             </label>
-            <p>File_id: {att.file_id}</p>
-            <p>File_name: {att.file_name}</p>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "5px",
+              }}
+            >
+              <p>
+                <span
+                  style={{
+                    color: "rgb(137, 138, 154)",
+                  }}
+                >
+                  File_id:
+                </span>
+                {" " + att.file_id}
+              </p>
+              <p>
+                <span
+                  style={{
+                    color: "rgb(137, 138, 154)",
+                  }}
+                >
+                  File_name:
+                </span>
+                {" " + att.file_name}
+              </p>
+            </div>
           </section>
         );
       }),
@@ -76,7 +105,7 @@ export default function BlockAttachmentsShow({ record, resource }) {
       <section
         style={{
           border: "1px dashed rgb(187, 195, 203)",
-          padding: "16px",
+          padding: "16px 16px 8px 16px",
           boxSizing: "border-box",
           minWidth: "0px",
           fontFamily: "Roboto, sans-serif",

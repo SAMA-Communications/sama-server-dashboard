@@ -2,6 +2,7 @@ import AdminJS from "adminjs";
 import AdminJSExpress from "@adminjs/express";
 import dotenv from "dotenv";
 import express from "express";
+import { ObjectId } from "./resources/db/ObjectId.js";
 import { Resource, Database } from "@adminjs/mongoose";
 
 // -- resources
@@ -40,14 +41,27 @@ const start = async () => {
     rootPath: "/",
     loginPath: "/login",
     logoutPath: "/logout",
-    branding: {
-      companyName: "SAMA",
-    },
 
     // dashboard: {
     //   component: Components.Dashboard,
     // },
     componentLoader,
+
+    // branding: {
+    //   companyName: "SAMA",
+    //   softwareBrothers: false,
+    //   logo: "./assets/logo.png",
+    // },
+    // locale: {
+    //   translations: {
+    //     messages: {
+    //       loginWelcome: "1", // the smaller text
+    //     },
+    //     labels: {
+    //       loginWelcome: "2", // this could be your project name
+    //     },
+    //   },
+    // },
 
     resources: [
       ...[Users, Users_],
@@ -86,6 +100,19 @@ const start = async () => {
     }
   );
   app.use(admin.options.rootPath, adminRouter);
+
+  app.get("/getParticipantsByCid", async function (req, res) {
+    if (!req.query.cid || req.query.cid === "undefined") {
+      return;
+    }
+
+    const participants = await (+req.query.isDev
+      ? ConversationsParticipants_
+      : ConversationsParticipants
+    ).resource.find({ conversation_id: new ObjectId(req.query.cid) });
+
+    res.send(participants);
+  });
 
   app.listen(process.env.APP_PORT, () => {
     console.log(

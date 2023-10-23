@@ -65,6 +65,13 @@ const commonOptions = {
         show: Components.BlockTypeShow,
       },
     },
+    participants: {
+      type: "string",
+      components: {
+        list: Components.ShortcutParticipantsView,
+        show: Components.BlockParticipantsShow,
+      },
+    },
   },
 };
 

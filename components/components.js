@@ -144,6 +144,10 @@ const Components = {
     "BlockParticipantsShow",
     path.resolve(__dirname, "./conversations/BlockParticipantsShow")
   ),
+  ShortcutParticipantsView: componentLoader.add(
+    "ShortcutParticipantsView",
+    path.resolve(__dirname, "./conversations/ShortcutParticipantsView")
+  ),
 };
 
 export { componentLoader, Components };

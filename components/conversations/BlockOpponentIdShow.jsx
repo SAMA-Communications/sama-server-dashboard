@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function BlockOpponentIdShow({ record, resource }) {
   const currentOpponentId = record.params.opponent_id;
 
-  return (
+  return record.params.type === "u" ? (
     <section
       style={{
         boxSizing: "border-box",
@@ -36,5 +36,5 @@ export default function BlockOpponentIdShow({ record, resource }) {
         {currentOpponentId}
       </Link>
     </section>
-  );
+  ) : null;
 }
