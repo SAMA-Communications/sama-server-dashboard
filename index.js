@@ -4,7 +4,6 @@ import AdminJSExpress from "@adminjs/express";
 import dotenv from "dotenv";
 import express from "express";
 import path from "path";
-import { locales as AdminJSLocales } from "adminjs";
 import { ObjectId } from "./resources/db/ObjectId.js";
 import { Resource, Database } from "@adminjs/mongoose";
 
@@ -32,6 +31,7 @@ import { ClusterNodes, ClusterNodes_ } from "./resources/cluster_nodes.js";
 import { BlockedUsers, BlockedUsers_ } from "./resources/blocked_users.js";
 
 // -- components
+import { dashboardHandler } from "./handlers/dashboard.handler.js";
 import { Components, componentLoader } from "./components/components.js";
 
 dotenv.config();
@@ -45,9 +45,10 @@ const start = async () => {
     loginPath: "/login",
     logoutPath: "/logout",
 
-    // dashboard: {
-    //   component: Components.Dashboard,
-    // },
+    dashboard: {
+      component: Components.Dashboard,
+      handler: dashboardHandler,
+    },
     componentLoader,
 
     resources: [
@@ -66,7 +67,7 @@ const start = async () => {
     ],
 
     branding: {
-      companyName: "SAMA",
+      companyName: "SAMAPANEL",
       softwareBrothers: false,
       withMadeWithLove: false,
       favicon: `https://samacloud.io/favicon/favicon-32x32.png`,
