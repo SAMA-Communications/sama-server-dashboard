@@ -4,6 +4,7 @@ import AdminJSExpress from "@adminjs/express";
 import dotenv from "dotenv";
 import express from "express";
 import path from "path";
+import { locales as AdminJSLocales } from "adminjs";
 import { ObjectId } from "./resources/db/ObjectId.js";
 import { Resource, Database } from "@adminjs/mongoose";
 
@@ -44,9 +45,9 @@ const start = async () => {
     loginPath: "/login",
     logoutPath: "/logout",
 
-    dashboard: {
-      component: Components.Dashboard,
-    },
+    // dashboard: {
+    //   component: Components.Dashboard,
+    // },
     componentLoader,
 
     resources: [
@@ -75,6 +76,28 @@ const start = async () => {
 
     locale: {
       debug: false,
+      translations: {
+        en: {
+          labels: {
+            navigation: "Databases",
+          },
+          components: {
+            Login: {
+              welcomeHeader: "",
+              welcomeMessage: "",
+              properties: {
+                email: "Login",
+                password: "Password",
+              },
+              loginButton: "Login",
+            },
+          },
+          messages: {
+            welcomeOnBoard_title: "Welcome on SAMA server dashboard!",
+            welcomeOnBoard_subtitle: "",
+          },
+        },
+      },
     },
 
     assets: {

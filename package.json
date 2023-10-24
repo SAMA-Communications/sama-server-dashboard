@@ -9,6 +9,7 @@
     "start": "nodemon -r dotenv/config index.js"
   },
   "dependencies": {
+    "@adminjs/design-system": "^4.0.3",
     "@adminjs/express": "^6.0.1",
     "@adminjs/mongoose": "^4.0.0",
     "@emotion/react": "^11.11.1",
