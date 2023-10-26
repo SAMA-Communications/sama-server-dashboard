@@ -3,9 +3,17 @@ import { Users } from "../resources/users.js";
 import { Conversations } from "../resources/conversations.js";
 
 const dayInSec = 24 * 60 * 60 * 1000;
-let currentDate = new Date();
+function sort(arr) {
+  arr.sort(
+    (a, b) =>
+      new Date(a.year, a.month - 1, a.day) -
+      new Date(b.year, b.month - 1, b.day)
+  );
+}
 
 export const dashboardHandler = async (request, response, context) => {
+  let currentDate = new Date();
+
   // * ---- Users ---- * //
   const users_total = await Users.resource.count();
   const users_last_month = await Users.resource.count({
@@ -34,7 +42,7 @@ export const dashboardHandler = async (request, response, context) => {
   const users_per_day_map = new Map();
 
   aggregateDayResult.forEach((result) => {
-    const date = `${result._id.day}.${result._id.month}`;
+    const date = `${result._id.day}-${result._id.month}`;
     users_per_day_map.set(date, {
       date,
       year: result._id.year,
@@ -47,7 +55,7 @@ export const dashboardHandler = async (request, response, context) => {
   const users_per_day = [];
 
   for (let i = 0; i < 30; i++) {
-    const dateKey = `${currentDate.getDate()}.${currentDate.getMonth() + 1}`;
+    const dateKey = `${currentDate.getDate()}-${currentDate.getMonth() + 1}`;
     if (users_per_day_map.has(dateKey)) {
       users_per_day.push(users_per_day_map.get(dateKey));
     } else {
@@ -61,12 +69,7 @@ export const dashboardHandler = async (request, response, context) => {
     }
     currentDate.setDate(currentDate.getDate() - 1);
   }
-
-  users_per_day.sort(
-    (a, b) =>
-      new Date(b.year, b.month - 1, b.day) -
-      new Date(a.year, a.month - 1, a.day)
-  );
+  sort(users_per_day);
   // ---- user_per_day ---- //
 
   // ---- user_per_month ---- //
@@ -91,7 +94,7 @@ export const dashboardHandler = async (request, response, context) => {
         date: {
           $concat: [
             { $toString: "$_id.month" },
-            ".",
+            "-",
             { $toString: "$_id.year" },
           ],
         },
@@ -107,10 +110,12 @@ export const dashboardHandler = async (request, response, context) => {
     },
   ]);
 
+  currentDate = new Date();
+
   const allMonths = [];
   for (let i = 0; i < 12; i++) {
     allMonths.push(
-      `${currentDate.getMonth() + 2}.${currentDate.getFullYear()}`
+      `${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`
     );
     currentDate.setMonth(currentDate.getMonth() - 1);
   }
@@ -120,12 +125,12 @@ export const dashboardHandler = async (request, response, context) => {
   );
 
   const users_per_month = allMonths.map((date) => {
-    const [month, year] = date.split(".").map((el) => +el);
+    const [month, year] = date.split("-").map((el) => +el);
     return users_per_month_map.get(date) || { count: 0, date, year, month };
   });
 
   users_per_month.sort(
-    (a, b) => new Date(b.year, b.month - 1) - new Date(a.year, a.month - 1)
+    (a, b) => new Date(a.year, a.month - 1) - new Date(b.year, b.month - 1)
   );
   // ---- user_per_month ---- //
 
@@ -166,7 +171,7 @@ export const dashboardHandler = async (request, response, context) => {
   const messages_per_day_map = new Map();
 
   aggregateDayResult_m.forEach((result) => {
-    const date = `${result._id.day}.${result._id.month}`;
+    const date = `${result._id.day}-${result._id.month}`;
     messages_per_day_map.set(date, {
       date,
       year: result._id.year,
@@ -179,7 +184,7 @@ export const dashboardHandler = async (request, response, context) => {
   const messages_per_day = [];
 
   for (let i = 0; i < 30; i++) {
-    const dateKey = `${currentDate.getDate()}.${currentDate.getMonth() + 1}`;
+    const dateKey = `${currentDate.getDate()}-${currentDate.getMonth() + 1}`;
     if (messages_per_day_map.has(dateKey)) {
       messages_per_day.push(messages_per_day_map.get(dateKey));
     } else {
@@ -194,11 +199,7 @@ export const dashboardHandler = async (request, response, context) => {
     currentDate.setDate(currentDate.getDate() - 1);
   }
 
-  messages_per_day.sort(
-    (a, b) =>
-      new Date(b.year, b.month - 1, b.day) -
-      new Date(a.year, a.month - 1, a.day)
-  );
+  sort(messages_per_day);
   // ---- messages_per_day ---- //
 
   const messagesStatistics = {
@@ -237,7 +238,7 @@ export const dashboardHandler = async (request, response, context) => {
   const conversations_per_day_map = new Map();
 
   aggregateDayResult_c.forEach((result) => {
-    const date = `${result._id.day}.${result._id.month}`;
+    const date = `${result._id.day}-${result._id.month}`;
     conversations_per_day_map.set(date, {
       date,
       year: result._id.year,
@@ -250,7 +251,7 @@ export const dashboardHandler = async (request, response, context) => {
   const conversations_per_day = [];
 
   for (let i = 0; i < 30; i++) {
-    const dateKey = `${currentDate.getDate()}.${currentDate.getMonth() + 1}`;
+    const dateKey = `${currentDate.getDate()}-${currentDate.getMonth() + 1}`;
     if (conversations_per_day_map.has(dateKey)) {
       conversations_per_day.push(conversations_per_day_map.get(dateKey));
     } else {
@@ -265,11 +266,7 @@ export const dashboardHandler = async (request, response, context) => {
     currentDate.setDate(currentDate.getDate() - 1);
   }
 
-  conversations_per_day.sort(
-    (a, b) =>
-      new Date(b.year, b.month - 1, b.day) -
-      new Date(a.year, a.month - 1, a.day)
-  );
+  sort(conversations_per_day);
   // ---- conversations_per_day ---- //
 
   const conversationsStatistics = {

@@ -1,16 +1,17 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, H2, H5, Illustration, Text } from "@adminjs/design-system";
 import { styled } from "@adminjs/design-system/styled-components";
 import { ApiClient, useTranslation } from "adminjs";
-
-// import {
-//   YAxis,
-//   XAxis,
-//   CartesianGrid,
-//   Tooltip,
-//   AreaChart,
-//   Area,
-// } from "recharts";
+import {
+  YAxis,
+  XAxis,
+  CartesianGrid,
+  Tooltip,
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+  LabelList,
+} from "recharts";
 
 const pageHeaderHeight = 284;
 const pageHeaderPaddingY = 74;
@@ -85,48 +86,64 @@ export default function Dashboard() {
       .catch((err) => console.error(err));
   }, []);
 
-  const usersChartsView = useMemo(() => {
-    if (!data || !data.usersStatistics) {
-      return;
+  function getCharts(data, value, name, lineColor, gradientColor) {
+    if (!data) {
+      return "";
     }
 
-    return "";
-    // <AreaChart
-    //   width={900}
-    //   height={450}
-    //   data={data.usersStatistics}
-    //   margin={{ top: 40, right: 40, left: 40, bottom: 40 }}
-    // >
-    //   <defs>
-    //     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-    //       <stop offset="5%" stopColor="#A2FF86" stopOpacity={0.6} />
-    //       <stop offset="95%" stopColor="#A2FF86" stopOpacity={0.1} />
-    //     </linearGradient>
-    //     <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-    //       <stop offset="5%" stopColor="#279EFF" stopOpacity={0.6} />
-    //       <stop offset="95%" stopColor="#279EFF" stopOpacity={0.1} />
-    //     </linearGradient>
-    //   </defs>
-    //   <XAxis dataKey="month" />
-    //   <YAxis />
-    //   <CartesianGrid strokeDasharray="0" />
-    //   <Tooltip />
-    //   <Area
-    //     type="monotone"
-    //     dataKey="count_per_month"
-    //     stroke="#1A5D1A"
-    //     fillOpacity={1}
-    //     fill="url(#colorUv)"
-    //   />
-    //   <Area
-    //     type="monotone"
-    //     dataKey="count_total"
-    //     stroke="#362FD9"
-    //     fillOpacity={1}
-    //     fill="url(#colorPv)"
-    //   />
-    // </AreaChart>
-  }, [data]);
+    const renderCustomizedLabel = (props) => {
+      const { x, y, value } = props;
+
+      return value ? (
+        <g transform={`translate(${x},${y})`}>
+          <text
+            x={`${value}`.length * 4}
+            y={0}
+            dy={-5}
+            textAnchor="end"
+            fill="#666"
+          >
+            {value}
+          </text>
+        </g>
+      ) : null;
+    };
+
+    return (
+      <ResponsiveContainer width="100%" height={400}>
+        <AreaChart
+          data={data}
+          margin={{ top: 20, right: 20, left: 20, bottom: 0 }}
+        >
+          <defs>
+            <linearGradient
+              id={`colorUv${gradientColor}`}
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+            >
+              <stop offset="5%" stopColor={gradientColor} stopOpacity={0.7} />
+              <stop offset="95%" stopColor={gradientColor} stopOpacity={0.2} />
+            </linearGradient>
+          </defs>
+          <XAxis dataKey={name} />
+          <YAxis />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey={value}
+            stroke={lineColor}
+            fillOpacity={1}
+            fill={`url(#colorUv${gradientColor})`}
+          >
+            <LabelList dataKey={value} content={renderCustomizedLabel} />
+          </Area>
+        </AreaChart>
+      </ResponsiveContainer>
+    );
+  }
 
   return (
     <Box>
@@ -142,7 +159,7 @@ export default function Dashboard() {
         flexWrap="wrap"
         width={[1, 1, 1, 1024]}
       >
-        <Box width={[1, 1, 1 / 2]} p="lg">
+        {/* <Box width={[1, 1, 1 / 2]} p="lg">
           <Card flex>
             <Box flexShrink={0}>
               <Illustration variant="SlackLogo" />
@@ -163,35 +180,97 @@ export default function Dashboard() {
               <Text>{"foundBug_subtitle"}</Text>
             </Box>
           </Card>
-        </Box>
-        {/* <Card width={1} m="lg">
+        </Box> */}
+        <Card width={1} m="lg">
           <Text textAlign="center">
-            <Illustration variant="AdminJSLogo" />
-            <H5>{"needMoreSolutions_title"}</H5>
-            <Text>{"needMoreSolutions_subtitle"}</Text>
-            <Text mt="xxl">
-              <Button
-                as="a"
-                variant="contained"
-                href="https://share.hsforms.com/1IedvmEz6RH2orhcL6g2UHA8oc5a"
-                target="_blank"
-              >
-                {"contactUs"}
-              </Button>
+            <H5>
+              <b>USERS:</b> general statistics
+            </H5>
+            <Text>Total: {data?.usersStatistics.users_total}</Text>
+            <Text>last_month: {data?.usersStatistics.users_last_month}</Text>
+          </Text>
+        </Card>
+        <Card width={1} m="lg">
+          <Text textAlign="center">
+            <H5>
+              <b>USERS:</b> statistics for the last 30 days
+            </H5>
+            {getCharts(
+              data?.usersStatistics.users_per_day,
+              "count",
+              "date",
+              "#0802A3",
+              "#3085C3"
+            )}
+          </Text>
+        </Card>
+        <Card width={1} m="lg">
+          <Text textAlign="center">
+            <H5>
+              <b>USERS:</b> statistics for all time
+            </H5>
+            {getCharts(
+              data?.usersStatistics.users_per_month,
+              "count",
+              "date",
+              "#0802A3",
+              "#3085C3"
+            )}
+          </Text>
+        </Card>
+        <Card width={1} m="lg">
+          <Text textAlign="center">
+            <H5>
+              <b>CONVERSATIONS:</b> general statistics
+            </H5>
+            <Text>
+              Total: {data?.conversationsStatistics.conversations_total}
+            </Text>
+            <Text>
+              last_month:{" "}
+              {data?.conversationsStatistics.conversations_last_month}
             </Text>
           </Text>
         </Card>
         <Card width={1} m="lg">
-          <Card>
-            <Box flexShrink={0}>
-              <Illustration variant="GithubLogo" />
-            </Box>
-            <Box ml="xl">
-              <H5>{"foundBug_title"}</H5>
-              <Text>{"foundBug_subtitle"}</Text>
-            </Box>
-          </Card>
-        </Card> */}
+          <Text textAlign="center">
+            <H5>
+              <b>CONVERSATIONS:</b> statistics for the last 30 days
+            </H5>
+            {getCharts(
+              data?.conversationsStatistics.conversations_per_day,
+              "count",
+              "date",
+              "#40128B",
+              "#6F61C0"
+            )}
+          </Text>
+        </Card>
+        <Card width={1} m="lg">
+          <Text textAlign="center">
+            <H5>
+              <b>MESSAGES:</b> general statistics
+            </H5>
+            <Text>Total: {data?.messagesStatistics.messages_total}</Text>
+            <Text>
+              last_month: {data?.messagesStatistics.messages_last_month}
+            </Text>
+          </Text>
+        </Card>
+        <Card width={1} m="lg">
+          <Text textAlign="center">
+            <H5>
+              <b>MESSAGES:</b> statistics for the last 30 days
+            </H5>
+            {getCharts(
+              data?.messagesStatistics.messages_per_day,
+              "count",
+              "date",
+              "#B31312",
+              "#F86F03"
+            )}
+          </Text>
+        </Card>
       </Box>
     </Box>
   );
