@@ -2,16 +2,16 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Box, H2, H5, Illustration, Text } from "@adminjs/design-system";
 import { styled } from "@adminjs/design-system/styled-components";
 import { ApiClient, useTranslation } from "adminjs";
-import {
-  YAxis,
-  XAxis,
-  CartesianGrid,
-  Tooltip,
-  AreaChart,
-  Area,
-  ResponsiveContainer,
-  LabelList,
-} from "recharts";
+// import {
+//   YAxis,
+//   XAxis,
+//   CartesianGrid,
+//   Tooltip,
+//   AreaChart,
+//   Area,
+//   ResponsiveContainer,
+//   LabelList,
+// } from "recharts";
 
 const pageHeaderHeight = 284;
 const pageHeaderPaddingY = 74;
@@ -106,38 +106,39 @@ export default function Dashboard() {
     };
 
     return (
-      <ResponsiveContainer width="100%" height={400}>
-        <AreaChart
-          data={data}
-          margin={{ top: 20, right: 20, left: 20, bottom: 0 }}
-        >
-          <defs>
-            <linearGradient
-              id={`colorUv${gradientColor}`}
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="1"
-            >
-              <stop offset="5%" stopColor={gradientColor} stopOpacity={0.7} />
-              <stop offset="95%" stopColor={gradientColor} stopOpacity={0.2} />
-            </linearGradient>
-          </defs>
-          <XAxis dataKey={name} />
-          <YAxis />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
-          <Area
-            type="monotone"
-            dataKey={value}
-            stroke={lineColor}
-            fillOpacity={1}
-            fill={`url(#colorUv${gradientColor})`}
-          >
-            <LabelList dataKey={value} content={renderCustomizedLabel} />
-          </Area>
-        </AreaChart>
-      </ResponsiveContainer>
+      // <ResponsiveContainer width="100%" height={400}>
+      //   <AreaChart
+      //     data={data}
+      //     margin={{ top: 20, right: 20, left: 20, bottom: 0 }}
+      //   >
+      //     <defs>
+      //       <linearGradient
+      //         id={`colorUv${gradientColor}`}
+      //         x1="0"
+      //         y1="0"
+      //         x2="0"
+      //         y2="1"
+      //       >
+      //         <stop offset="5%" stopColor={gradientColor} stopOpacity={0.7} />
+      //         <stop offset="95%" stopColor={gradientColor} stopOpacity={0.2} />
+      //       </linearGradient>
+      //     </defs>
+      //     <XAxis dataKey={name} />
+      //     <YAxis />
+      //     <CartesianGrid strokeDasharray="3 3" />
+      //     <Tooltip />
+      //     <Area
+      //       type="monotone"
+      //       dataKey={value}
+      //       stroke={lineColor}
+      //       fillOpacity={1}
+      //       fill={`url(#colorUv${gradientColor})`}
+      //     >
+      //       <LabelList dataKey={value} content={renderCustomizedLabel} />
+      //     </Area>
+      //   </AreaChart>
+      // </ResponsiveContainer>
+      ""
     );
   }
 
@@ -155,28 +156,6 @@ export default function Dashboard() {
         flexWrap="wrap"
         width={[1, 1, 1, 1024]}
       >
-        {/* <Box width={[1, 1, 1 / 2]} p="lg">
-          <Card flex>
-            <Box flexShrink={0}>
-              <Illustration variant="SlackLogo" />
-            </Box>
-            <Box ml="xl">
-              <H5>{"community_title"}</H5>
-              <Text>{"community_subtitle"}</Text>
-            </Box>
-          </Card>
-        </Box>
-        <Box width={[1, 1, 1 / 2]} p="lg">
-          <Card flex>
-            <Box flexShrink={0}>
-              <Illustration variant="GithubLogo" />
-            </Box>
-            <Box ml="xl">
-              <H5>{"foundBug_title"}</H5>
-              <Text>{"foundBug_subtitle"}</Text>
-            </Box>
-          </Card>
-        </Box> */}
         <Box width={[1, 1, 1 / 3]} p="lg">
           <Card
             flex

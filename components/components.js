@@ -13,6 +13,10 @@ const Components = {
     "Dashboard",
     path.resolve(__dirname, "./dashboard/Dashboard")
   ),
+  TopBar: componentLoader.override(
+    "TopBar",
+    path.resolve(__dirname, "./dashboard/TopBar")
+  ),
   // -- users
   ShortcutIdView: componentLoader.add(
     "ShortcutIdView",
