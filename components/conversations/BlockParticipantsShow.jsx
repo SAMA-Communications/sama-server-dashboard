@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 
 export default function BlockParticipantsShow({ record, resource }) {
   const [participants, setParticipants] = useState([]);
-  console.log(participants);
+
   useEffect(() => {
     if (!record.params._id || record.params._id === "undefined") {
       return;
@@ -24,12 +24,10 @@ export default function BlockParticipantsShow({ record, resource }) {
             key={u._id}
             style={{
               boxSizing: "border-box",
-              minWidth: "0px",
               fontFamily: "Roboto, sans-serif",
               lineHeight: "16px",
               fontSize: "14px",
               fontWeight: "normal",
-              marginBottom: "4px",
               display: "flex",
             }}
           >
@@ -38,11 +36,13 @@ export default function BlockParticipantsShow({ record, resource }) {
                 display: "block",
                 fontFamily: "Roboto, sans-serif",
                 fontSize: "12px",
-                lineHeight: "16px",
                 color: "rgb(137, 138, 154)",
-                marginBottom: "4px",
                 paddingRight: "10px",
                 fontWeight: 300,
+                height: "24px",
+                padding: "4px 12px",
+                lineHeight: "24px",
+                border: "1px dashed rgb(187, 195, 203)",
               }}
             >
               {index + 1}:
@@ -51,6 +51,13 @@ export default function BlockParticipantsShow({ record, resource }) {
               to={`/resources/users${
                 resource.id.charAt(resource.id.length - 1) === "_" ? "_" : ""
               }/records/${u.user_id}/show`}
+              style={{
+                width: "220px",
+                height: "24px",
+                padding: "4px 12px",
+                lineHeight: "24px",
+                border: "1px dashed rgb(187, 195, 203)",
+              }}
             >
               {u.user_id}
             </Link>
@@ -87,10 +94,7 @@ export default function BlockParticipantsShow({ record, resource }) {
       </label>
       <section
         style={{
-          border: "1px dashed rgb(187, 195, 203)",
-          padding: "16px 16px 8px 16px",
           boxSizing: "border-box",
-          minWidth: "0px",
           fontFamily: "Roboto, sans-serif",
           lineHeight: "16px",
           fontSize: "14px",
@@ -98,11 +102,8 @@ export default function BlockParticipantsShow({ record, resource }) {
         }}
       >
         <section
-          // data-css="messages-show-attachments.0"
-          // data-testid="property-show-attachments.0"
           style={{
             boxSizing: "border-box",
-            minWidth: "0px",
             fontFamily: "Roboto, sans-serif",
             lineHeight: "16px",
             fontSize: "14px",

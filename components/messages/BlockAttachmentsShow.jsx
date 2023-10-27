@@ -20,12 +20,10 @@ export default function BlockAttachmentsShow({ record, resource }) {
             key={att.file_id}
             style={{
               boxSizing: "border-box",
-              minWidth: "0px",
               fontFamily: "Roboto, sans-serif",
               lineHeight: "16px",
               fontSize: "14px",
               fontWeight: "normal",
-              marginBottom: "16px",
               display: "flex",
             }}
           >
@@ -34,11 +32,13 @@ export default function BlockAttachmentsShow({ record, resource }) {
                 display: "block",
                 fontFamily: "Roboto, sans-serif",
                 fontSize: "12px",
-                lineHeight: "16px",
                 color: "rgb(137, 138, 154)",
-                marginBottom: "4px",
                 paddingRight: "10px",
                 fontWeight: 300,
+                height: "48px",
+                padding: "4px 12px",
+                lineHeight: "48px",
+                border: "1px dashed rgb(187, 195, 203)",
               }}
             >
               {index + 1}:
@@ -48,6 +48,11 @@ export default function BlockAttachmentsShow({ record, resource }) {
                 display: "flex",
                 flexDirection: "column",
                 gap: "5px",
+                width: "100%",
+                height: "48px",
+                padding: "4px 12px",
+                lineHeight: "24px",
+                border: "1px dashed rgb(187, 195, 203)",
               }}
             >
               <p>
@@ -104,10 +109,7 @@ export default function BlockAttachmentsShow({ record, resource }) {
       </label>
       <section
         style={{
-          border: "1px dashed rgb(187, 195, 203)",
-          padding: "16px 16px 8px 16px",
           boxSizing: "border-box",
-          minWidth: "0px",
           fontFamily: "Roboto, sans-serif",
           lineHeight: "16px",
           fontSize: "14px",
@@ -115,11 +117,8 @@ export default function BlockAttachmentsShow({ record, resource }) {
         }}
       >
         <section
-          // data-css="messages-show-attachments.0"
-          // data-testid="property-show-attachments.0"
           style={{
             boxSizing: "border-box",
-            minWidth: "0px",
             fontFamily: "Roboto, sans-serif",
             lineHeight: "16px",
             fontSize: "14px",

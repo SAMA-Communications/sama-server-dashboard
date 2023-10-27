@@ -101,7 +101,7 @@ const start = async () => {
     },
 
     assets: {
-      styles: ["./index.css"],
+      styles: ["/index.css"],
     },
   };
   const admin = new AdminJS(adminOptions);
