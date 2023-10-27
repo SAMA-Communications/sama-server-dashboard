@@ -156,7 +156,7 @@ export default function Dashboard() {
         flexWrap="wrap"
         width={[1, 1, 1, 1024]}
       >
-        <Box width={[1, 1, 1 / 3]} p="lg">
+        <Box width={[1, 1, 1, 1 / 3]} p="lg" data-css="stats-minibox">
           <Card
             flex
             style={{ justifyContent: "center", gap: "10px", width: "100%" }}
@@ -198,7 +198,7 @@ export default function Dashboard() {
               <Text
                 textAlign="center"
                 style={{
-                  fontSize: "2.8rem",
+                  fontSize: "2.6rem",
                   lineHeight: "100%",
                   marginBottom: 0,
                 }}
@@ -208,7 +208,7 @@ export default function Dashboard() {
             </Box>
           </Card>
         </Box>
-        <Box width={[1, 1, 1 / 3]} p="lg">
+        <Box width={[1, 1, 1, 1 / 3]} p="lg" data-css="stats-minibox">
           <Card
             flex
             style={{ justifyContent: "center", gap: "10px", width: "100%" }}
@@ -250,7 +250,7 @@ export default function Dashboard() {
               <Text
                 textAlign="center"
                 style={{
-                  fontSize: "2.8rem",
+                  fontSize: "2.6rem",
                   lineHeight: "100%",
                   marginBottom: 0,
                 }}
@@ -260,7 +260,7 @@ export default function Dashboard() {
             </Box>
           </Card>
         </Box>
-        <Box width={[1, 1, 1 / 3]} p="lg">
+        <Box width={[1, 1, 1, 1 / 3]} p="lg" data-css="stats-minibox">
           <Card
             flex
             style={{ justifyContent: "center", gap: "10px", width: "100%" }}
@@ -302,7 +302,7 @@ export default function Dashboard() {
               <Text
                 textAlign="center"
                 style={{
-                  fontSize: "2.8rem",
+                  fontSize: "2.6rem",
                   lineHeight: "100%",
                   marginBottom: 0,
                 }}
