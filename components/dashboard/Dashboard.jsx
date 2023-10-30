@@ -1,17 +1,8 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Box, H2, H5, Illustration, Text } from "@adminjs/design-system";
-import { styled } from "@adminjs/design-system/styled-components";
+import React, { useEffect, useState } from "react";
 import { ApiClient, useTranslation } from "adminjs";
-// import {
-//   YAxis,
-//   XAxis,
-//   CartesianGrid,
-//   Tooltip,
-//   AreaChart,
-//   Area,
-//   ResponsiveContainer,
-//   LabelList,
-// } from "recharts";
+import { Box, H2, H5, Illustration, Text } from "@adminjs/design-system";
+import { LineChartComponent } from "./Linechart";
+import { styled } from "@adminjs/design-system/styled-components";
 
 const pageHeaderHeight = 284;
 const pageHeaderPaddingY = 74;
@@ -85,62 +76,6 @@ export default function Dashboard() {
       })
       .catch((err) => console.error(err));
   }, []);
-
-  function getCharts(data, value, name, lineColor, gradientColor) {
-    const renderCustomizedLabel = (props) => {
-      const { x, y, value } = props;
-
-      return value ? (
-        <g transform={`translate(${x},${y})`}>
-          <text
-            x={`${value}`.length * 4}
-            y={0}
-            dy={-5}
-            textAnchor="end"
-            fill="#666"
-          >
-            {value}
-          </text>
-        </g>
-      ) : null;
-    };
-
-    return (
-      // <ResponsiveContainer width="100%" height={400}>
-      //   <AreaChart
-      //     data={data}
-      //     margin={{ top: 20, right: 20, left: 20, bottom: 0 }}
-      //   >
-      //     <defs>
-      //       <linearGradient
-      //         id={`colorUv${gradientColor}`}
-      //         x1="0"
-      //         y1="0"
-      //         x2="0"
-      //         y2="1"
-      //       >
-      //         <stop offset="5%" stopColor={gradientColor} stopOpacity={0.7} />
-      //         <stop offset="95%" stopColor={gradientColor} stopOpacity={0.2} />
-      //       </linearGradient>
-      //     </defs>
-      //     <XAxis dataKey={name} />
-      //     <YAxis />
-      //     <CartesianGrid strokeDasharray="3 3" />
-      //     <Tooltip />
-      //     <Area
-      //       type="monotone"
-      //       dataKey={value}
-      //       stroke={lineColor}
-      //       fillOpacity={1}
-      //       fill={`url(#colorUv${gradientColor})`}
-      //     >
-      //       <LabelList dataKey={value} content={renderCustomizedLabel} />
-      //     </Area>
-      //   </AreaChart>
-      // </ResponsiveContainer>
-      ""
-    );
-  }
 
   return (
     <Box>
@@ -317,15 +252,15 @@ export default function Dashboard() {
             <H5>
               <b>USERS:</b> statistics for all time
             </H5>
-            {data?.usersStatistics.users_per_month
-              ? getCharts(
-                  data?.usersStatistics.users_per_month,
-                  "count",
-                  "date",
-                  "#0802A3",
-                  "#3085C3"
-                )
-              : null}
+            {data?.usersStatistics.users_per_month ? (
+              <LineChartComponent
+                data={data?.usersStatistics.users_per_month}
+                value={"count"}
+                name={"date"}
+                lineColor={"#0802A3"}
+                gradientColor={"#3085C3"}
+              />
+            ) : null}
           </Text>
         </Card>
         <Card width={1} m="lg">
@@ -333,15 +268,15 @@ export default function Dashboard() {
             <H5>
               <b>USERS:</b> statistics for the last 30 days
             </H5>
-            {data?.usersStatistics.users_per_day
-              ? getCharts(
-                  data?.usersStatistics.users_per_day,
-                  "count",
-                  "date",
-                  "#0802A3",
-                  "#3085C3"
-                )
-              : null}
+            {data?.usersStatistics.users_per_day ? (
+              <LineChartComponent
+                data={data?.usersStatistics.users_per_day}
+                value={"count"}
+                name={"date"}
+                lineColor={"#0802A3"}
+                gradientColor={"#3085C3"}
+              />
+            ) : null}
             Total number of entries for 30 days:
             <b>{" " + data?.usersStatistics.users_last_month}</b>
           </Text>
@@ -351,15 +286,15 @@ export default function Dashboard() {
             <H5>
               <b>CONVERSATIONS:</b> statistics for the last 30 days
             </H5>
-            {data?.conversationsStatistics.conversations_per_day
-              ? getCharts(
-                  data?.conversationsStatistics.conversations_per_day,
-                  "count",
-                  "date",
-                  "#40128B",
-                  "#6F61C0"
-                )
-              : null}
+            {data?.conversationsStatistics.conversations_per_day ? (
+              <LineChartComponent
+                data={data?.conversationsStatistics.conversations_per_day}
+                value={"count"}
+                name={"date"}
+                lineColor={"#40128B"}
+                gradientColor={"#6F61C0"}
+              />
+            ) : null}
             Total number of entries for 30 days:
             <b>
               {" " + data?.conversationsStatistics.conversations_last_month}
@@ -371,15 +306,15 @@ export default function Dashboard() {
             <H5>
               <b>MESSAGES:</b> statistics for the last 30 days
             </H5>
-            {data?.messagesStatistics.messages_per_day
-              ? getCharts(
-                  data?.messagesStatistics.messages_per_day,
-                  "count",
-                  "date",
-                  "#B31312",
-                  "#F86F03"
-                )
-              : null}
+            {data?.messagesStatistics.messages_per_day ? (
+              <LineChartComponent
+                data={data?.messagesStatistics.messages_per_day}
+                value={"count"}
+                name={"date"}
+                lineColor={"#B31312"}
+                gradientColor={"#F86F03"}
+              />
+            ) : null}
             Total number of entries for 30 days:
             <b>{" " + data?.messagesStatistics.messages_last_month}</b>
           </Text>
