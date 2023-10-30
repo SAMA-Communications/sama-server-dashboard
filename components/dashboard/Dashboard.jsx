@@ -71,7 +71,7 @@ export default function Dashboard() {
     api
       .getDashboard()
       .then((res) => {
-        console.log("[data]", res.data);
+        // console.log("[data]", res.data);
         setData(res.data);
       })
       .catch((err) => console.error(err));
