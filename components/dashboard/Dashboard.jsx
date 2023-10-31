@@ -77,6 +77,10 @@ export default function Dashboard() {
       .catch((err) => console.error(err));
   }, []);
 
+  function insertCommas(number) {
+    return number?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
     <Box>
       <DashboardHeader />
@@ -133,12 +137,12 @@ export default function Dashboard() {
               <Text
                 textAlign="center"
                 style={{
-                  fontSize: "2.6rem",
+                  fontSize: "2.4rem",
                   lineHeight: "100%",
                   marginBottom: 0,
                 }}
               >
-                {data?.usersStatistics.users_total}
+                {insertCommas(data?.usersStatistics.users_total)}
               </Text>
             </Box>
           </Card>
@@ -185,12 +189,14 @@ export default function Dashboard() {
               <Text
                 textAlign="center"
                 style={{
-                  fontSize: "2.6rem",
+                  fontSize: "2.4rem",
                   lineHeight: "100%",
                   marginBottom: 0,
                 }}
               >
-                {data?.conversationsStatistics.conversations_total}
+                {insertCommas(
+                  data?.conversationsStatistics.conversations_total
+                )}
               </Text>
             </Box>
           </Card>
@@ -237,12 +243,12 @@ export default function Dashboard() {
               <Text
                 textAlign="center"
                 style={{
-                  fontSize: "2.6rem",
+                  fontSize: "2.4rem",
                   lineHeight: "100%",
                   marginBottom: 0,
                 }}
               >
-                {data?.messagesStatistics.messages_total}
+                {insertCommas(data?.messagesStatistics.messages_total)}
               </Text>
             </Box>
           </Card>

@@ -111,14 +111,14 @@ export const dashboardHandler = async (request, response, context) => {
   ]);
 
   currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
 
-  const allMonths = [];
-  for (let i = 0; i < 12; i++) {
-    allMonths.push(
-      `${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`
-    );
-    currentDate.setMonth(currentDate.getMonth() - 1);
-  }
+  const allMonths = Array.from({ length: 12 }, (_, i) => {
+    const month = ((currentMonth - i + 12) % 12) + 1;
+    const year = currentYear + Math.floor((currentMonth - i) / 12);
+    return `${month}-${year}`;
+  });
 
   const users_per_month_map = new Map(
     aggregateMonthResult.map((result) => [result.date, result])
@@ -275,5 +275,9 @@ export const dashboardHandler = async (request, response, context) => {
     conversations_per_day,
   };
 
-  return { messagesStatistics, usersStatistics, conversationsStatistics };
+  return {
+    messagesStatistics,
+    usersStatistics,
+    conversationsStatistics,
+  };
 };

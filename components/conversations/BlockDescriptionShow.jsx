@@ -1,5 +1,5 @@
 export default function BlockDescriptionShow({ record, resource }) {
-  const currentDescriptions = record.params.descriptions;
+  const currentDescriptions = record.params.description;
 
   return (
     <section
@@ -24,7 +24,7 @@ export default function BlockDescriptionShow({ record, resource }) {
           fontWeight: 300,
         }}
       >
-        Descriptions
+        Description
       </label>
       {currentDescriptions}
     </section>
