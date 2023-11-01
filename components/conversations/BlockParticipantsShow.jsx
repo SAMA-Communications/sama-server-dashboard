@@ -40,7 +40,9 @@ export default function BlockParticipantsShow({ record, resource }) {
                 paddingRight: "10px",
                 fontWeight: 300,
                 height: "24px",
-                padding: "4px 12px",
+                width: "36px",
+                padding: "4px 0",
+                textAlign: "center",
                 lineHeight: "24px",
                 border: "1px dashed rgb(187, 195, 203)",
               }}

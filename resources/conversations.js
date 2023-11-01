@@ -30,7 +30,7 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: fields.slice(1),
+  editProperties: ["name", "description", "owner_id", "participants"],
   showProperties: fields,
   properties: {
     _id: {

@@ -35,7 +35,6 @@ section[data-css="topbar"] {
   gap: 10px;
   align-items: center;
 
-  pointer-events: none;
   z-index: 1;
 }
 section[data-css="nav-links"] {
@@ -85,6 +84,16 @@ section[data-css="nav-link"] {
 
   border-radius: 4px;
   background-color: #fff;
+}
+
+section[data-css="menu"] {
+  border: 1px solid transparent;
+  box-shadow: rgba(0, 0, 0, 0.1) 0rem 0.25rem 0.5rem;
+
+  transition: 0.2s border-color ease-in-out;
+}
+section[data-css="menu"]:hover {
+  border: 1px solid #0802a3;
 }
 
 @media screen and (max-width: 1323px) {

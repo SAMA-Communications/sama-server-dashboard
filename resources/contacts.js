@@ -27,7 +27,12 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: fields.slice(1),
+  actions: {
+    edit: {
+      isAccessible: false,
+      isVisible: true,
+    },
+  },
   showProperties: fields,
 };
 

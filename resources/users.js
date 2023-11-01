@@ -30,8 +30,9 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: fields.slice(1),
+  editProperties: ["login", "email", "phone", "first_name", "last_name"],
   showProperties: fields,
+
   properties: {
     _id: {
       type: "string",
@@ -54,6 +55,19 @@ const commonOptions = {
       },
     },
   },
+
+  // actions: {
+  //   edit: {
+  //     actionType: "record",
+  //     handler: async (request, response, context) => {
+  //       console.log(123);
+  //       const { record, currentAdmin } = context;
+  //       return {
+  //         record: record.toJSON(currentAdmin),
+  //       };
+  //     },
+  //   },
+  // },
 };
 
 const Users = {

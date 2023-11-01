@@ -29,14 +29,13 @@ export default function BlockAttachmentsShow({ record, resource }) {
           >
             <label
               style={{
-                display: "block",
+                width: "40px",
+                height: "58px",
+                textAlign: "center",
                 fontFamily: "Roboto, sans-serif",
                 fontSize: "12px",
                 color: "rgb(137, 138, 154)",
-                paddingRight: "10px",
                 fontWeight: 300,
-                height: "48px",
-                padding: "4px 12px",
                 lineHeight: "48px",
                 border: "1px dashed rgb(187, 195, 203)",
               }}
@@ -49,7 +48,7 @@ export default function BlockAttachmentsShow({ record, resource }) {
                 flexDirection: "column",
                 gap: "5px",
                 width: "100%",
-                height: "48px",
+                height: "50px",
                 padding: "4px 12px",
                 lineHeight: "24px",
                 border: "1px dashed rgb(187, 195, 203)",
