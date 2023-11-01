@@ -25,19 +25,20 @@ export default function BlockAttachmentsShow({ record, resource }) {
               fontSize: "14px",
               fontWeight: "normal",
               display: "flex",
+              borderBottom: "1px solid rgb(187, 195, 203)",
             }}
           >
             <label
               style={{
                 width: "40px",
-                height: "58px",
+                height: "auto",
                 textAlign: "center",
                 fontFamily: "Roboto, sans-serif",
                 fontSize: "12px",
                 color: "rgb(137, 138, 154)",
                 fontWeight: 300,
                 lineHeight: "48px",
-                border: "1px dashed rgb(187, 195, 203)",
+                borderRight: "1px solid rgb(187, 195, 203)",
               }}
             >
               {index + 1}:
@@ -48,10 +49,9 @@ export default function BlockAttachmentsShow({ record, resource }) {
                 flexDirection: "column",
                 gap: "5px",
                 width: "100%",
-                height: "50px",
+                height: "auto",
                 padding: "4px 12px",
                 lineHeight: "24px",
-                border: "1px dashed rgb(187, 195, 203)",
               }}
             >
               <p>
@@ -122,6 +122,9 @@ export default function BlockAttachmentsShow({ record, resource }) {
             lineHeight: "16px",
             fontSize: "14px",
             fontWeight: "normal",
+            border: "1px solid rgb(187, 195, 203)",
+            borderBottom: 0,
+            borderRadius: "2px",
           }}
         >
           {attachmentsView}

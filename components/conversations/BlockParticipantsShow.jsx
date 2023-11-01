@@ -29,6 +29,7 @@ export default function BlockParticipantsShow({ record, resource }) {
               fontSize: "14px",
               fontWeight: "normal",
               display: "flex",
+              borderBottom: "1px solid rgb(187, 195, 203)",
             }}
           >
             <label
@@ -38,13 +39,13 @@ export default function BlockParticipantsShow({ record, resource }) {
                 fontSize: "12px",
                 color: "rgb(137, 138, 154)",
                 paddingRight: "10px",
+                borderRight: "1px solid rgb(187, 195, 203)",
                 fontWeight: 300,
                 height: "24px",
                 width: "36px",
                 padding: "4px 0",
                 textAlign: "center",
                 lineHeight: "24px",
-                border: "1px dashed rgb(187, 195, 203)",
               }}
             >
               {index + 1}:
@@ -54,11 +55,10 @@ export default function BlockParticipantsShow({ record, resource }) {
                 resource.id.charAt(resource.id.length - 1) === "_" ? "_" : ""
               }/records/${u.user_id}/show`}
               style={{
-                width: "220px",
+                width: "270px",
                 height: "24px",
                 padding: "4px 12px",
                 lineHeight: "24px",
-                border: "1px dashed rgb(187, 195, 203)",
               }}
             >
               {u.user_id}
@@ -105,11 +105,15 @@ export default function BlockParticipantsShow({ record, resource }) {
       >
         <section
           style={{
+            width: "max-content",
             boxSizing: "border-box",
             fontFamily: "Roboto, sans-serif",
             lineHeight: "16px",
             fontSize: "14px",
             fontWeight: "normal",
+            border: "1px solid rgb(187, 195, 203)",
+            borderBottom: 0,
+            borderRadius: "2px",
           }}
         >
           {participantsView}
