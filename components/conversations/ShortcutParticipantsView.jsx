@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function ShortcutDescriptionView({ record, resource }) {
+export default function ShortcutParticipantsView({ record, resource }) {
   const [participantsData, setParticipantsData] = useState(null);
 
   useEffect(() => {

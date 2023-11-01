@@ -7,7 +7,7 @@ import { ObjectId } from "./db/ObjectId.js";
 const collectionName = "conversations_participants";
 export const ConversationsParticipantSchema = new Schema({
   conversation_id: ObjectId,
-  user_id: String,
+  user_id: ObjectId,
   updated_at: Date,
   created_at: Date,
 });

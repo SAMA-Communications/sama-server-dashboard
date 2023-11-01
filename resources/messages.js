@@ -2,13 +2,14 @@ import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { Components } from "../components/components.js";
+import { ObjectId } from "./db/ObjectId.js";
 
 const collectionName = "messages";
 const MessageSchema = new Schema({
   t: Number,
-  from: String,
+  from: ObjectId,
   body: String,
-  cid: String,
+  cid: ObjectId,
   x: Object,
   attachments: Array,
   updated_at: Date,

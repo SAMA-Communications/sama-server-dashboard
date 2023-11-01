@@ -2,12 +2,13 @@ import Schema from "./db/Shema.js";
 import dbDev, { dbDevNavigation } from "./db/db_dev.js";
 import dbProd, { dbProdNavigation } from "./db/db_prod.js";
 import { Components } from "../components/components.js";
+import { ObjectId } from "./db/ObjectId.js";
 
 const collectionName = "message_statuses";
 const MessageStatusSchema = new Schema({
-  cid: String,
-  mid: String,
-  user_id: String,
+  cid: ObjectId,
+  mid: ObjectId,
+  user_id: ObjectId,
   status: String,
   updated_at: Date,
   created_at: Date,
