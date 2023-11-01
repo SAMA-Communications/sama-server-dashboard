@@ -3,17 +3,17 @@ import { useEffect, useMemo, useState } from "react";
 export default function BlockParticipantsEdit({ record, resource }) {
   const [participants, setParticipants] = useState([]);
 
-  useEffect(() => {
-    if (!record.params._id || record.params._id === "undefined") {
-      return;
-    }
+  // useEffect(() => {
+  //   if (!record.params._id || record.params._id === "undefined") {
+  //     return;
+  //   }
 
-    fetch(
-      `/getParticipantsByCid?cid=${record.params._id}&isDev=${
-        resource.id.charAt(resource.id.length - 1) === "_" ? 1 : 0
-      }`
-    ).then((res) => res.json().then((data) => setParticipants(data)));
-  }, []);
+  //   fetch(
+  //     `/getParticipantsByCid?cid=${record.params._id}&isDev=${
+  //       resource.id.charAt(resource.id.length - 1) === "_" ? 1 : 0
+  //     }`
+  //   ).then((res) => res.json().then((data) => setParticipants(data)));
+  // }, []);
 
   const participantsView = useMemo(
     () =>

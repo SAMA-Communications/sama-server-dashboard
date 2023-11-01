@@ -58,6 +58,54 @@ const commonOptions = {
   },
 
   actions: {
+    new: {
+      actionType: "resource",
+      handler: async (request, response, context) => {
+        const { resource, h, currentAdmin } = context;
+        if (request.method === "post") {
+          const params = paramConverter.prepareParams(
+            request.payload ?? {},
+            resource
+          );
+          params.recent_activity = Math.round(new Date() / 1000);
+          !params.updated_at && (params.updated_at = new Date() / 1000);
+          !params.created_at && (params.created_at = new Date() / 1000);
+
+          let record = await resource.build(params);
+
+          record = await record.create(context);
+          const [populatedRecord] = await populator([record], context);
+
+          // eslint-disable-next-line no-param-reassign
+          context.record = populatedRecord;
+
+          if (record.isValid()) {
+            return {
+              redirectUrl: h.resourceUrl({
+                resourceId: resource._decorated?.id() || resource.id(),
+              }),
+              notice: {
+                message: "successfullyCreated",
+                type: "success",
+              },
+              record: record.toJSON(currentAdmin),
+            };
+          }
+          const baseMessage =
+            populatedRecord.baseError?.message || "thereWereValidationErrors";
+          return {
+            record: record.toJSON(currentAdmin),
+            notice: {
+              message: baseMessage,
+              type: "error",
+            },
+          };
+        }
+        throw new Error(
+          "new action can be invoked only via `post` http method"
+        );
+      },
+    },
     edit: {
       name: "edit",
       actionType: "record",

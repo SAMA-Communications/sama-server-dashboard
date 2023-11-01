@@ -92,6 +92,7 @@ const commonOptions = {
             "Action#handler"
           );
         }
+        console.log(record);
         if (request.method === "get") {
           return { record: record.toJSON(currentAdmin) };
         }
