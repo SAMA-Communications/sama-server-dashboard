@@ -14,70 +14,72 @@ export default function BlockAttachmentsShow({ record, resource }) {
 
   const attachmentsView = useMemo(
     () =>
-      Object.values(currentAttachments).map((att, index) => {
-        return (
-          <section
-            key={att.file_id}
-            style={{
-              boxSizing: "border-box",
-              fontFamily: "Roboto, sans-serif",
-              lineHeight: "16px",
-              fontSize: "14px",
-              fontWeight: "normal",
-              display: "flex",
-              borderBottom: "1px solid rgb(187, 195, 203)",
-            }}
-          >
-            <label
-              style={{
-                width: "40px",
-                height: "auto",
-                textAlign: "center",
-                fontFamily: "Roboto, sans-serif",
-                fontSize: "12px",
-                color: "rgb(137, 138, 154)",
-                fontWeight: 300,
-                lineHeight: "48px",
-                borderRight: "1px solid rgb(187, 195, 203)",
-              }}
-            >
-              {index + 1}:
-            </label>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "5px",
-                width: "100%",
-                height: "auto",
-                padding: "4px 12px",
-                lineHeight: "24px",
-              }}
-            >
-              <p>
-                <span
+      Object.values(currentAttachments).length
+        ? Object.values(currentAttachments).map((att, index) => {
+            return (
+              <section
+                key={att.file_id}
+                style={{
+                  boxSizing: "border-box",
+                  fontFamily: "Roboto, sans-serif",
+                  lineHeight: "16px",
+                  fontSize: "14px",
+                  fontWeight: "normal",
+                  display: "flex",
+                  borderBottom: "1px solid rgb(187, 195, 203)",
+                }}
+              >
+                <label
                   style={{
+                    width: "40px",
+                    height: "auto",
+                    textAlign: "center",
+                    fontFamily: "Roboto, sans-serif",
+                    fontSize: "12px",
                     color: "rgb(137, 138, 154)",
+                    fontWeight: 300,
+                    lineHeight: "48px",
+                    borderRight: "1px solid rgb(187, 195, 203)",
                   }}
                 >
-                  File_id:
-                </span>
-                {" " + att.file_id}
-              </p>
-              <p>
-                <span
+                  {index + 1}:
+                </label>
+                <div
                   style={{
-                    color: "rgb(137, 138, 154)",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "5px",
+                    width: "100%",
+                    height: "auto",
+                    padding: "4px 12px",
+                    lineHeight: "24px",
                   }}
                 >
-                  File_name:
-                </span>
-                {" " + att.file_name}
-              </p>
-            </div>
-          </section>
-        );
-      }),
+                  <p>
+                    <span
+                      style={{
+                        color: "rgb(137, 138, 154)",
+                      }}
+                    >
+                      File_id:
+                    </span>
+                    {" " + att.file_id}
+                  </p>
+                  <p>
+                    <span
+                      style={{
+                        color: "rgb(137, 138, 154)",
+                      }}
+                    >
+                      File_name:
+                    </span>
+                    {" " + att.file_name}
+                  </p>
+                </div>
+              </section>
+            );
+          })
+        : null,
     [currentAttachments]
   );
 
@@ -122,7 +124,9 @@ export default function BlockAttachmentsShow({ record, resource }) {
             lineHeight: "16px",
             fontSize: "14px",
             fontWeight: "normal",
-            border: "1px solid rgb(187, 195, 203)",
+            border: Object.values(currentAttachments).length
+              ? "1px solid rgb(187, 195, 203)"
+              : 0,
             borderBottom: 0,
             borderRadius: "2px",
           }}

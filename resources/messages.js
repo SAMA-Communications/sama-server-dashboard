@@ -36,6 +36,12 @@ const commonOptions = {
   showProperties: fields,
 
   properties: {
+    _id: {
+      type: "string",
+      components: {
+        list: Components.ShortcutIdView,
+      },
+    },
     body: {
       type: "string",
       components: {
