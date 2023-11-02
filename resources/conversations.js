@@ -32,7 +32,15 @@ const fields = [
 const commonOptions = {
   listProperties: fields,
   filterProperties: fields,
-  editProperties: ["name", "description", "owner_id", "participants"],
+  editProperties: [
+    "name",
+    "type",
+    "description",
+    "owner_id",
+    "opponent_id",
+    "updated_at",
+    "created_at",
+  ],
   showProperties: fields,
 
   properties: {
@@ -73,7 +81,6 @@ const commonOptions = {
       components: {
         list: Components.ShortcutParticipantsView,
         show: Components.BlockParticipantsShow,
-        edit: Components.BlockParticipantsEdit,
       },
     },
   },
@@ -92,7 +99,7 @@ const commonOptions = {
             "Action#handler"
           );
         }
-        console.log(record);
+
         if (request.method === "get") {
           return { record: record.toJSON(currentAdmin) };
         }

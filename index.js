@@ -33,6 +33,7 @@ import { BlockedUsers, BlockedUsers_ } from "./resources/blocked_users.js";
 // -- components
 import { dashboardHandler } from "./handlers/dashboard.handler.js";
 import { Components, componentLoader } from "./components/components.js";
+import { log } from "console";
 
 dotenv.config();
 AdminJS.registerAdapter({ Resource, Database });
@@ -137,7 +138,18 @@ const start = async () => {
       : ConversationsParticipants
     ).resource.find({ conversation_id: new ObjectId(req.query.cid) });
 
-    res.send(participants);
+    const usersInfo = await (+req.query.isDev ? Users_ : Users).resource.find({
+      _id: { $in: participants.map((el) => el.user_id) },
+    });
+
+    const resultArr = participants.map((p) => {
+      const uInfo = usersInfo.find(
+        (u) => u._id.toString() === p.user_id.toString()
+      );
+      return { user_id: p.user_id, user_info: uInfo, cpr_id: p._id };
+    });
+
+    res.send(resultArr);
   });
 
   const __dirname = url.fileURLToPath(new URL(".", import.meta.url));

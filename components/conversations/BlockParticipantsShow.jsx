@@ -21,7 +21,7 @@ export default function BlockParticipantsShow({ record, resource }) {
       participants.map((u, index) => {
         return (
           <section
-            key={u._id}
+            key={u.user_id}
             style={{
               boxSizing: "border-box",
               fontFamily: "Roboto, sans-serif",
@@ -41,7 +41,7 @@ export default function BlockParticipantsShow({ record, resource }) {
                 paddingRight: "10px",
                 borderRight: "1px solid rgb(187, 195, 203)",
                 fontWeight: 300,
-                height: "24px",
+                height: "auto",
                 width: "36px",
                 padding: "4px 0",
                 textAlign: "center",
@@ -50,19 +50,45 @@ export default function BlockParticipantsShow({ record, resource }) {
             >
               {index + 1}:
             </label>
-            <Link
-              to={`/resources/users${
-                resource.id.charAt(resource.id.length - 1) === "_" ? "_" : ""
-              }/records/${u.user_id}/show`}
+            <div
               style={{
-                width: "270px",
-                height: "24px",
+                width: "max-content",
+                height: "auto",
                 padding: "4px 12px",
                 lineHeight: "24px",
               }}
             >
-              {u.user_id}
-            </Link>
+              {u.user_info ? (
+                <>
+                  <Link
+                    to={`/resources/users${
+                      resource.id.charAt(resource.id.length - 1) === "_"
+                        ? "_"
+                        : ""
+                    }/records/${u.user_id}/show`}
+                  >
+                    {u.user_id}
+                  </Link>{" "}
+                  ({u.user_info?.login})
+                </>
+              ) : (
+                <p style={{ color: "rgb(137, 138, 154)" }}>
+                  User no longer exists
+                </p>
+              )}
+              <div className="cpr">
+                <p data-tooltip="Conversations-participants record">CPR*: </p>
+                <Link
+                  to={`/resources/conversations_participants${
+                    resource.id.charAt(resource.id.length - 1) === "_"
+                      ? "_"
+                      : ""
+                  }/records/${u.cpr_id}/show`}
+                >
+                  {u.cpr_id}
+                </Link>
+              </div>
+            </div>
           </section>
         );
       }),
@@ -116,7 +142,9 @@ export default function BlockParticipantsShow({ record, resource }) {
             borderRadius: "2px",
           }}
         >
-          {participantsView}
+          {participants.length
+            ? participantsView
+            : "No participants in the chat"}
         </section>
       </section>
     </section>

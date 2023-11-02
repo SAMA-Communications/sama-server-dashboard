@@ -4,14 +4,6 @@ export default function ShortcutParticipantsView({ record, resource }) {
   const [participantsData, setParticipantsData] = useState(null);
 
   useEffect(() => {
-    if (!participantsData || record.params.participants?.length > 0) {
-      return;
-    }
-
-    record.params.participants = new Array(...participantsData);
-  }, [participantsData]);
-
-  useEffect(() => {
     if (!record.params._id || record.params._id === "undefined") {
       return;
     }

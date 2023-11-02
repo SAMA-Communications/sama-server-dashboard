@@ -2,6 +2,10 @@ input {
   border-radius: 4px !important;
 }
 
+a[data-css="sidebar-logo"] {
+  padding: 20px 0 10px 0;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -15,10 +19,6 @@ input {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #999;
-}
-
-a[data-css="sidebar-logo"] {
-  padding: 20px 0 10px 0;
 }
 
 section[data-css="default-dashboard"] {
@@ -94,6 +94,42 @@ section[data-css="menu"] {
 }
 section[data-css="menu"]:hover {
   border: 1px solid #0802a3;
+}
+
+[data-tooltip] {
+  position: relative;
+}
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  width: max-content;
+  left: -40px;
+  top: 0;
+  background: #d5d5d5;
+  color: #000;
+  padding: 0.5em;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  border: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.4s;
+}
+[data-tooltip]:hover::after {
+  opacity: 1;
+  top: 1.5em;
+}
+.cpr {
+  width: 100%;
+  margin-top: 5px;
+  padding-top: 5px;
+  display: flex;
+  gap: 5px;
+  color: rgb(48, 64, 214);
+  border-top: 1px dashed rgb(187, 195, 203);
+}
+.cpr > a,
+.cpr > a:visited {
+  color: rgb(48, 64, 214);
 }
 
 @media screen and (max-width: 1323px) {
