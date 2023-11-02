@@ -2,7 +2,7 @@
 
 #### Powered by [`AdminJS`](https://github.com/SoftwareBrothers/adminjs)
 
-This application will help you store your system more easily and efficiently.
+This Node.js application will help you store your system more easily and efficiently.
 
 The main project repository: [sama-server](https://github.com/SAMA-Communications/sama-server/)
 
