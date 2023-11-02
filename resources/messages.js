@@ -35,6 +35,11 @@ const commonOptions = {
   editProperties: fields,
   showProperties: fields,
 
+  sort: {
+    sortBy: "created_at",
+    direction: "desc",
+  },
+
   properties: {
     _id: {
       type: "string",
