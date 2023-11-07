@@ -11,7 +11,7 @@ The main project repository (chat server): [sama-server](https://github.com/SAMA
 <img width="830" alt="[image] SAMA server dashboard" src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*hpBys1AAeatkXrss9-vtTw.jpeg">
 
 
-Read detailed article about this app - [SAMA server dashboard](#)
+Read detailed article about this app - [SAMA server dashboard overview](https://medium.com/sama-communications/sama-server-dashboard-9eae8c0d6c20)
 
 ## Development
 
