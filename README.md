@@ -4,7 +4,7 @@
 
 ## Overview 
 
-Administrative dashbaord for SAMA char server
+Administrative dashboard for SAMA char server
 
 The main project repository (chat server): [sama-server](https://github.com/SAMA-Communications/sama-server/)
 
