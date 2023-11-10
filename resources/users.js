@@ -60,6 +60,13 @@ const commonOptions = {
         show: Components.BlockPhoneShow,
       },
     },
+    recent_activity: {
+      type: "string",
+      components: {
+        list: Components.ShortcutRecentActivityView,
+        show: Components.BlockRecentActivityShow,
+      },
+    },
   },
 
   actions: {

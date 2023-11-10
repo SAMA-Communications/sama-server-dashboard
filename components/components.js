@@ -38,6 +38,14 @@ const Components = {
     "ShortcutPhoneView",
     path.resolve(__dirname, "./users/ShortcutPhoneView")
   ),
+  BlockRecentActivityShow: componentLoader.add(
+    "BlockRecentActivityShow",
+    path.resolve(__dirname, "./users/BlockRecentActivityShow")
+  ),
+  ShortcutRecentActivityView: componentLoader.add(
+    "ShortcutRecentActivityView",
+    path.resolve(__dirname, "./users/ShortcutRecentActivityView")
+  ),
   // -- user_tokens
   BlockTokenShow: componentLoader.add(
     "BlockTokenShow",
